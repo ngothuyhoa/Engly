@@ -12,5 +12,17 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
-});
+    return view('page_user.home.index');
+})->name('homes');
+Route::get('/post', function () {
+    return view('page_user.post.index');
+})->name('post');
+
+Route::get('/user', function () {
+    return view('page_user.user.index');
+})->name('user');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/post', 'User\PostController@index')->name('post');

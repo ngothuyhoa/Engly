@@ -1,5 +1,4 @@
-<header class="header-section" style="background: #0d0d29
-">
+<header class="header-section" style="background: #0d0d29">
 	<a href="{{ route('home') }}" class="site-logo"><img src="assets/img/logo.png" alt=""></a>
 	<div class="nav-switch">
 		<i class="fa fa-bars"></i>

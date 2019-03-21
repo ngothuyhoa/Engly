@@ -16,7 +16,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'fullname', 'name', 'email', 'password',
     ];
 
     /**
@@ -27,4 +27,21 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    protected $perPage;
+    public function __construct($attributes = [])
+    {
+        parent::__construct($attributes);
+        $this->perPage = config('paginate.user');
+    }
+
+    public function post()
+    {
+        return $this->hasMany('App\Post');
+    }
+
+    public function images()
+    {
+        return $this->morphMany(Image::class, 'imageable');
+    }
 }

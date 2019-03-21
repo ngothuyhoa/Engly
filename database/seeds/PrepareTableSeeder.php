@@ -3,8 +3,9 @@
 use Illuminate\Database\Seeder;
 use App\Post;
 use App\Tag;
+use App\User;
 
-class PostTagsTableSeeder extends Seeder
+class PrepareTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -13,6 +14,7 @@ class PostTagsTableSeeder extends Seeder
      */
     public function run()
     {
+        $users = factory(App\User::class, 3)->create();
         $posts = factory(App\Post::class, 30)->create();
 	    $tags = factory(App\Tag::class, 20)->create();
 	    $posts->each(function (App\Post $r) use ($tags) {
@@ -20,5 +22,8 @@ class PostTagsTableSeeder extends Seeder
 	            $tags->random(rand(5, 10))->pluck('id')->toArray()
 	        );
 	    });
+
+        $images = factory(App\Image::class, 50)->create();
+
     }
 }

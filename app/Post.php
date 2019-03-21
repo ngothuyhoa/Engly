@@ -22,4 +22,14 @@ class Post extends Model
     {
         return $this->belongsToMany('App\Tag', 'post_tags');
     }
+
+    public function user()
+    {
+        return $this->belongsTo('App\User');
+    }
+
+    public function images()
+    {
+        return $this->morphMany(Image::class, 'imageable');
+    }
 }

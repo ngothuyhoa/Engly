@@ -21,9 +21,17 @@ class PostController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        dd($this->postRepository->all());
+        $posts = $this->postRepository->paginate();
+
+        if ($request->ajax()) {
+            return view(
+                'page_user.post.post_paginate', compact('posts')
+            );
+        }
+
+        return View('page_user.post.index', compact('posts'));
     }
 
     /**

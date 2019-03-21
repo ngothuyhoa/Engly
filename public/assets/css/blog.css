@@ -295,3 +295,20 @@ button.accordion.active:after {
     margin:10px;
     text-align: right;
 }
+
+.text-center {
+    height: 70px;
+}
+
+#tag {
+    margin-bottom: 10px;
+    font-size: 13px;
+}
+.view-all {
+    margin-top: 50px;
+    font-weight: bold;
+}
+
+.media-object {
+    width:60px;
+}

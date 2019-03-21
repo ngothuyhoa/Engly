@@ -9,7 +9,8 @@ class RepositoryServiceProvider extends ServiceProvider
      * @return void
      */
     protected $models = [
-        'Post'
+        'Post',
+        'Tag'
     ];
     public function boot()
     {

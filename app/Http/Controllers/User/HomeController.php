@@ -1,14 +1,16 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\User;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Contracts\Repositories\PostRepository;
+use App\Contracts\Repositories\TagRepository;
 
 class HomeController extends Controller
 {
     protected $postRepository;
+    protected $tagRepository;
     
     /**
      * Create a new controller instance.
@@ -17,11 +19,12 @@ class HomeController extends Controller
      */
     public function __construct(
 
-        PostRepository $postRepository
+        PostRepository $postRepository,
+        TagRepository $tagRepository
     )
     {
-        $this->middleware('auth');
         $this->postRepository = $postRepository;
+        $this->tagRepository = $tagRepository;
     }
 
     /**
@@ -32,8 +35,8 @@ class HomeController extends Controller
     public function index()
     {
         $posts = $this->postRepository->paginate();
-
-        return View('home');
+        $tags = $this->tagRepository->paginate();
+        return View('page_user.home.index', compact(['posts', 'tags']));
     }
 
     /**

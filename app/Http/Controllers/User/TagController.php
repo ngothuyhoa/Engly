@@ -1,39 +1,28 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\User;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Contracts\Repositories\PostRepository;
+use App\Contracts\Repositories\TagRepository;
 
-class HomeController extends Controller
+class TagController extends Controller
 {
-    protected $postRepository;
+    protected $tagRepository;
     
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
     public function __construct(
-
-        PostRepository $postRepository
-    )
-    {
-        $this->middleware('auth');
-        $this->postRepository = $postRepository;
+        TagRepository $tagRepository
+    ) {
+        $this->tagRepository = $tagRepository;
     }
-
     /**
-     * Show the application dashboard.
+     * Display a listing of the resource.
      *
-     * @return \Illuminate\Contracts\Support\Renderable
+     * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        $posts = $this->postRepository->paginate();
-
-        return View('home');
+        //
     }
 
     /**

@@ -18,7 +18,7 @@ class PrepareTableSeeder extends Seeder
         $posts = factory(App\Post::class, 30)->create();
 	    $tags = factory(App\Tag::class, 20)->create();
 	    $posts->each(function (App\Post $r) use ($tags) {
-	        $r->tag()->attach(
+	        $r->tags()->attach(
 	            $tags->random(rand(5, 10))->pluck('id')->toArray()
 	        );
 	    });

@@ -18,8 +18,8 @@ class Tag extends Model
         $this->perPage = config('paginate.tag');
     }
 
-    public function Post()
+    public function posts()
     {
-        return $this->belongsToMany('App\Post');
+        return $this->belongsToMany('App\Post', 'post_tags');
     }
 }

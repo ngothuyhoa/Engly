@@ -21,6 +21,7 @@ class CreatePostsTable extends Migration
             $table->unsignedInteger('view');
             $table->unsignedInteger('vote');
             $table->string('slug')->unique();
+            $table->unsignedInteger('status');
             $table->timestamps();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
         });

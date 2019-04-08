@@ -13,12 +13,18 @@
 
 Route::get('/', 'User\HomeController@index')->name('home');
 Route::get('/post', 'User\PostController@index')->name('post');
+Route::get('/post_featured', 'User\PostController@indexFeatured')->name('post_featured');
+Route::get('user/{id}', 'User\UserController@show')->name('user_detail');
 
 Route::get('/user', function () {
     return view('page_user.user.index');
 })->name('user');
 
 Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('homes');
+// Post
 Route::get('/post', 'User\PostController@index')->name('post');
+Route::get('/post/{slug}', 'User\PostController@show')->name('post_detail');
+Route::get('/find_tag/{slug}', 'User\PostController@findByTag')->name('find_tag');
+
+//User
+

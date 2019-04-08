@@ -4,41 +4,26 @@ namespace App\Http\Controllers\User;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Contracts\Repositories\PostRepository;
-use App\Contracts\Repositories\TagRepository;
+use App\Contracts\Repositories\UserRepository;
 
-class HomeController extends Controller
+class UserController extends Controller
 {
-    protected $postRepository;
-    protected $tagRepository;
-    
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
+    protected $userRepository;
+
     public function __construct(
-
-        PostRepository $postRepository,
-        TagRepository $tagRepository
-    )
-    {
-        $this->postRepository = $postRepository;
-        $this->tagRepository = $tagRepository;
+        UserRepository $userRepository
+    ) {
+        $this->userRepository = $userRepository;
     }
-
     /**
-     * Show the application dashboard.
+     * Display a listing of the resource.
      *
-     * @return \Illuminate\Contracts\Support\Renderable
+     * @return \Illuminate\Http\Response
      */
+
     public function index()
     {
-        $posts = $this->postRepository->paginate();
-        $tags = $this->tagRepository->paginate();
-        $featuredPosts = $this->postRepository->findByFeaturedNews();
-
-        return View('page_user.home.index', compact(['posts', 'tags', 'featuredPosts']));
+        //
     }
 
     /**
@@ -68,9 +53,20 @@ class HomeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Request $request, $id)
     {
-        //
+        $title = config('blog.list_post');
+        $user = $this->userRepository->findBySlug($id);
+
+        $posts = $user->posts()->where('status', '1')->paginate();
+
+        if ($request->ajax()) {
+            return view(
+                'page_user.post.post_paginate', compact('posts', 'title')
+            );
+        }
+        
+        return view('page_user.user.index', compact(['user', 'posts', 'title']));
     }
 
     /**

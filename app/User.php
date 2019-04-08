@@ -35,7 +35,7 @@ class User extends Authenticatable
         $this->perPage = config('paginate.user');
     }
 
-    public function post()
+    public function posts()
     {
         return $this->hasMany('App\Post');
     }

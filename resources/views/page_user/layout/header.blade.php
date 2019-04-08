@@ -5,7 +5,7 @@
 	</div>
 	<div class="nav-warp">
 		<div class="user-panel">
-			<a href="#" data-toggle="modal" data-target="#exampleModal">Login/Register</a>
+			<a href="{{ url('/login') }}">Login/Register</a>
 		</div>
 		<ul class="main-menu">
 			<li><a href="{{ route('home') }}">Home</a></li>

@@ -1,6 +1,6 @@
 @foreach($posts as $post)
 <div class="media">
-    <a href="">
+    <a href="{{ route('post_detail', $post->slug) }}">
         <div class="media-left media-post">
             @if(count($post->images))
                 @foreach($post->images as $image)
@@ -13,8 +13,10 @@
         </div>
     </a>
     <div class="media-body">
-        <h6 class="media-heading">{{ $post->title }}</h6>
-        <a href="">
+        <a href="{{ route('post_detail', $post->slug) }}">
+            <h6 class="media-heading">{{ $post->title }}</h6>
+        </a>
+        <a href="{{ route('user_detail', $post->user->name)}}">
             <small>
             <i class="fa fa-user" data-original-title="" title=""></i>
                 {{ $post->user->name }}
@@ -27,11 +29,11 @@
             </small>
             <small>
                 <i class="fa fa-eye" data-original-title="" title="" style="padding-left: 20px"></i>
-                100
+                {{ $post->view }}
             </small>
             <small>
-                <i class="fa fa-comment" data-original-title="" title="" style="padding-left: 20px"></i>
-                10
+                <i class="fa fa-heart" data-original-title="" title="" style="padding-left: 20px"></i>
+                {{ $post->vote }}
             </small>
         </p>
     </div>

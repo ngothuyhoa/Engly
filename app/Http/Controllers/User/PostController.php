@@ -5,15 +5,19 @@ namespace App\Http\Controllers\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Contracts\Repositories\PostRepository;
+use App\Contracts\Repositories\TagRepository;
 
 class PostController extends Controller
 {
     protected $postRepository;
+    protected $tagRepository;
     
     public function __construct(
-        PostRepository $postRepository
+        PostRepository $postRepository,
+        TagRepository $tagRepository
     ) {
         $this->postRepository = $postRepository;
+        $this->tagRepository = $tagRepository;
     }
 
     /**
@@ -23,15 +27,16 @@ class PostController extends Controller
      */
     public function index(Request $request)
     {
+        $title = config('blog.list_post');
         $posts = $this->postRepository->paginate();
 
         if ($request->ajax()) {
             return view(
-                'page_user.post.post_paginate', compact('posts')
+                'page_user.post.post_paginate', compact('posts', 'title')
             );
         }
 
-        return View('page_user.post.index', compact('posts'));
+        return View('page_user.post.index', compact('posts', 'title'));
     }
 
     /**
@@ -61,9 +66,15 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($slug)
     {
-        //
+        $post = $this->postRepository->findBySlug($slug);
+        
+        /*foreach ($post->tags as $tag) {
+           dump($tag);
+        }*/
+
+        return View('page_user.post.detail', compact('post'));
     }
 
     /**
@@ -98,5 +109,34 @@ class PostController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function findByTag(Request $request, $slug)
+    {
+        $tag = $this->tagRepository->findBySlug($slug);
+        $title = 'Result Search Tag: '. $tag->name;
+
+        $posts = $tag->posts()->paginate();
+        if ($request->ajax()) {
+            return view(
+                'page_user.post.post_paginate', compact('posts', 'title')
+            );
+        }
+
+        return View('page_user.post.index', compact('posts', 'title'));
+    }
+
+    public function indexFeatured(Request $request)
+    {
+        $title = config('blog.featured_post');
+        $posts = $this->postRepository->AllFeaturedNews();
+
+        if ($request->ajax()) {
+            return view(
+                'page_user.post.post_paginate', compact('posts', 'title')
+            );
+        }
+
+        return View('page_user.post.index', compact('posts', 'title'));
     }
 }

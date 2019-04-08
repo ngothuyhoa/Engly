@@ -312,3 +312,16 @@ button.accordion.active:after {
 .media-object {
     width:60px;
 }
+
+.tag_post {
+    margin-top: 10px;
+    padding-bottom: 5px;
+    font-size: 12px;
+}
+
+.social {
+    padding-top: 10px;
+}
+.share-news {
+    margin-bottom: 30px;
+}

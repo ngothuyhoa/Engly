@@ -16,4 +16,9 @@ class EloquentTagRepository extends EloquentBaseRepository implements TagReposit
 
     	return $this->model->orderBy('id', 'DESC')->paginate();
     }
+
+    public function findBySlug($slug) {
+
+        return $this->model->with(['posts'])->where('slug', $slug)->first();
+    }
 }

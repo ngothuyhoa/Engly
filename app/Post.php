@@ -8,7 +8,7 @@ class Post extends Model
 {
 	protected $table = 'posts';
     protected $fillable = [
-        'user_id', 'title', 'content', 'view', 'vote', 'slug'
+        'user_id', 'title', 'content', 'view', 'vote', 'status', 'slug'
     ];
 
     protected $perPage;
@@ -18,7 +18,7 @@ class Post extends Model
         $this->perPage = config('paginate.post');
     }
 
-    public function tag()
+    public function tags()
     {
         return $this->belongsToMany('App\Tag', 'post_tags');
     }

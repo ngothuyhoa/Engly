@@ -28,3 +28,6 @@ Route::get('/find_tag/{slug}', 'User\PostController@findByTag')->name('find_tag'
 
 //User
 
+Route::get('admin', function(){
+	return view('admin.dashboard.index');
+});

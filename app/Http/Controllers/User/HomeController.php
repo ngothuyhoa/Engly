@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Contracts\Repositories\PostRepository;
 use App\Contracts\Repositories\TagRepository;
+use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
@@ -33,7 +34,7 @@ class HomeController extends Controller
      * @return \Illuminate\Contracts\Support\Renderable
      */
     public function index()
-    {
+    {   
         $posts = $this->postRepository->paginate();
         $tags = $this->tagRepository->paginate();
         $featuredPosts = $this->postRepository->findByFeaturedNews();

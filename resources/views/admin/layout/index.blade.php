@@ -15,8 +15,16 @@
 	<link rel="stylesheet" href="/assets/admin/css/dataTables.bootstrap4.css">
 	<!-- Theme style -->
 	<link rel="stylesheet" href="/assets/admin/css/adminlte.min.css">
+	<!-- bootstrap wysihtml5 - text editor -->
+  	<link rel="stylesheet" href="/assets/admin/css/bootstrap3-wysihtml5.min.css">
+	<!-- Custom css -->
+	<link rel="stylesheet" href="/assets/admin/css/admin-blog.css">
+	<!-- iCheck for checkboxes and radio inputs -->
+  	<link rel="stylesheet" href="/assets/admin/css/all.css">
 	<!-- Google Font: Source Sans Pro -->
 	<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+	<!-- Tag input -->
+	<link rel="stylesheet" href="/assets/admin/css/bootstrap-tagsinput.css">
 </head>
 <body class="hold-transition sidebar-mini">
 	<div class="wrapper">
@@ -145,7 +153,7 @@
 		<!-- Main Sidebar Container -->
 		<aside class="main-sidebar sidebar-dark-primary elevation-4">
 			<!-- Brand Logo -->
-			<a href="../../index3.html" class="brand-link">
+			<a href="{{ route('home') }}" class="brand-link">
 				<img src="/assets/admin/img/AdminLTELogo.png"
 				alt="AdminLTE Logo"
 				class="brand-image img-circle elevation-3"
@@ -168,69 +176,123 @@
 				<!-- Sidebar Menu -->
 				<nav class="mt-2">
 					<ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-			          	<li class="nav-item has-treeview">
-			          		<a href="#" class="nav-link">
+						<li class="nav-item has-treeview">
+			          		<a href="{{ route('dashboard') }}" class="nav-link">
 			          			<i class="nav-icon fa fa-dashboard"></i>
-			          			<p>
 			          				Dashboard
+			          		</a>
+			          	</li>
+			          	<li class="nav-item has-treeview">
+			          		<a href="{{ route('index_post') }}" class="nav-link">
+			          			<i class="nav-icon fa fa-pencil"></i>
+			          			<p>
+			          				Post
 			          				<i class="right fa fa-angle-left"></i>
 			          			</p>
 			          		</a>
 			          		<ul class="nav nav-treeview">
 			          			<li class="nav-item">
-			          				<a href="../../index.html" class="nav-link">
+			          				<a href="{{ route('index_post') }}" class="nav-link">
 			          					<i class="fa fa-circle-o nav-icon"></i>
-			          					<p>Dashboard v1</p>
+			          					<p> List Post</p>
+			          				</a>
+			          			</li>
+			          			<li class="nav-item">
+			          				<a href="{{ route('create_post') }}" class="nav-link">
+			          					<i class="fa fa-plus-circle nav-icon center"></i>
+			          					<p>Create New Post</p>
+			          				</a>
+			          			</li>
+			          		</ul>
+			          	</li>
+			          	<li class="nav-item has-treeview">
+			          		<a href="{{ route('index_user') }}" class="nav-link">
+			          			<i class="nav-icon fa fa-user"></i>
+			          			<p>
+			          				User
+			          				<i class="right fa fa-angle-left"></i>
+			          			</p>
+			          		</a>
+			          		<ul class="nav nav-treeview">
+			          			<li class="nav-item">
+			          				<a href="{{ route('index_user') }}" class="nav-link">
+			          					<i class="fa fa-circle-o nav-icon"></i>
+			          					<p> List User</p>
 			          				</a>
 			          			</li>
 			          			<li class="nav-item">
 			          				<a href="../../index2.html" class="nav-link">
 			          					<i class="fa fa-circle-o nav-icon"></i>
-			          					<p>Dashboard v2</p>
-			          				</a>
-			          			</li>
-			          			<li class="nav-item">
-			          				<a href="../../index3.html" class="nav-link">
-			          					<i class="fa fa-circle-o nav-icon"></i>
-			          					<p>Dashboard v3</p>
+			          					<p>Create New Post</p>
 			          				</a>
 			          			</li>
 			          		</ul>
 			          	</li>
-			          	<li class="nav-item">
-			          		<a href="../widgets.html" class="nav-link">
-			          			<i class="nav-icon fa fa-th"></i>
-			          			<p>
-			          				Widgets
-			          				<span class="right badge badge-danger">New</span>
-			          			</p>
-			          		</a>
-			          	</li>
 			          	<li class="nav-item has-treeview">
-			          		<a href="#" class="nav-link">
-			          			<i class="nav-icon fa fa-pie-chart"></i>
+			          		<a href="{{ route('index_feedback') }}" class="nav-link">
+			          			<i class="nav-icon fa fa-file"></i>
 			          			<p>
-			          				Charts
+			          				Feedback
 			          				<i class="right fa fa-angle-left"></i>
 			          			</p>
 			          		</a>
 			          		<ul class="nav nav-treeview">
 			          			<li class="nav-item">
-			          				<a href="../charts/chartjs.html" class="nav-link">
+			          				<a href="{{ route('index_feedback') }}" class="nav-link">
 			          					<i class="fa fa-circle-o nav-icon"></i>
-			          					<p>ChartJS</p>
+			          					<p> List Feedback</p>
 			          				</a>
 			          			</li>
 			          			<li class="nav-item">
-			          				<a href="../charts/flot.html" class="nav-link">
+			          				<a href="../../index2.html" class="nav-link">
 			          					<i class="fa fa-circle-o nav-icon"></i>
-			          					<p>Flot</p>
+			          					<p>Create New Post</p>
+			          				</a>
+			          			</li>
+			          		</ul>
+			          	</li>
+			          	<li class="nav-item has-treeview">
+			          		<a href="{{ route('index_report') }}" class="nav-link">
+			          			<i class="nav-icon fa fa-flag"></i>
+			          			<p>
+			          				Report
+			          				<i class="right fa fa-angle-left"></i>
+			          			</p>
+			          		</a>
+			          		<ul class="nav nav-treeview">
+			          			<li class="nav-item">
+			          				<a href="{{ route('index_report') }}" class="nav-link">
+			          					<i class="fa fa-circle-o nav-icon"></i>
+			          					<p> List Report</p>
 			          				</a>
 			          			</li>
 			          			<li class="nav-item">
-			          				<a href="../charts/inline.html" class="nav-link">
+			          				<a href="../../index2.html" class="nav-link">
 			          					<i class="fa fa-circle-o nav-icon"></i>
-			          					<p>Inline</p>
+			          					<p>Create New Post</p>
+			          				</a>
+			          			</li>
+			          		</ul>
+			          	</li>
+			          	<li class="nav-item has-treeview">
+			          		<a href="{{ route('index_following') }}" class="nav-link">
+			          			<i class="nav-icon fa fa-users"></i>
+			          			<p>
+			          				Following
+			          				<i class="right fa fa-angle-left"></i>
+			          			</p>
+			          		</a>
+			          		<ul class="nav nav-treeview">
+			          			<li class="nav-item">
+			          				<a href="{{ route('index_following') }}" class="nav-link">
+			          					<i class="fa fa-circle-o nav-icon"></i>
+			          					<p> List Following</p>
+			          				</a>
+			          			</li>
+			          			<li class="nav-item">
+			          				<a href="../../index2.html" class="nav-link">
+			          					<i class="fa fa-circle-o nav-icon"></i>
+			          					<p>Create New Post</p>
 			          				</a>
 			          			</li>
 			          		</ul>
@@ -279,6 +341,13 @@
 	<script src="/assets/admin/js/adminlte.min.js"></script>
 	<!-- AdminLTE for demo purposes -->
 	<script src="/assets/admin/js/demo.js"></script>
+	<script src="/assets/admin/js/ckeditor.js"></script>
+	<!-- iCheck 1.0.1 -->
+	<script src="/assets/admin/js/icheck.min.js"></script>
+	<!-- Bootstrap WYSIHTML5 -->
+	<script src="/assets/admin/js/bootstrap3-wysihtml5.all.min.js"></script>
+	<!-- Tag Input -->
+	<script src="/assets/admin/js/bootstrap-tagsinput.min.js"></script>
 	<!-- page script -->
 	<script>
 		$(function () {
@@ -293,5 +362,28 @@
 			});
 		});
 	</script>
+
+	<script>
+  $(function () {
+    // Replace the <textarea id="editor1"> with a CKEditor
+    // instance, using default configuration.
+    ClassicEditor
+      .create(document.querySelector('#editor1'))
+      .then(function (editor) {
+        // The editor instance
+      })
+      .catch(function (error) {
+        console.error(error)
+      })
+
+    // bootstrap WYSIHTML5 - text editor
+
+    $('.textarea').wysihtml5({
+      toolbar: { fa: true }
+    })
+  })
+</script>
+
+
 </body>
 </html>

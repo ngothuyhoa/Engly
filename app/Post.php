@@ -32,4 +32,14 @@ class Post extends Model
     {
         return $this->morphMany(Image::class, 'imageable');
     }
+
+    public function scopePublished($query)
+    {
+        return $query->where('published', true);
+    }
+
+    public function scopeUnpublished($query)
+    {
+        return $query->where('published', false);
+    }
 }

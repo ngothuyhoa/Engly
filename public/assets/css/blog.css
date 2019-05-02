@@ -325,3 +325,9 @@ button.accordion.active:after {
 .share-news {
     margin-bottom: 30px;
 }
+
+#title_news {
+    font-size: 20px;
+    font-weight: bold;
+}
+

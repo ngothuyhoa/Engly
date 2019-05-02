@@ -1716,3 +1716,21 @@ ol {
 		right: 20px;
 	}
 }
+#nav-warp-id {
+    width: 80%;
+    padding-right: 50px;
+}
+#dropdown-id {
+    float: right;
+    margin-top: 20px;
+}
+#dropdown-toggle-id {
+    background: #0d0d29;
+    color: orange;
+    font-size: 14px;
+}
+#logout {
+    background: white;
+    border: 0px;
+    
+}

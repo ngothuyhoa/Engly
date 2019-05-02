@@ -7,6 +7,8 @@ use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\Schema;
 use App\Tag;
 use App\User;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\View;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -17,6 +19,10 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        View::share('auth-header', Auth::user());
+        //View::share('check', Auth::check());
+
+
         view()->composer([
             'page_user.layout.sidebar',
         ], function ($view) {
@@ -25,11 +31,15 @@ class AppServiceProvider extends ServiceProvider
             });
 
             $userSidebars = \Cache::remember('user_sidebar', 60, function () {
-                return User::With('images')->paginate(6);
+                return User::With('images')->paginate(3);
             });
             
             $view->with(['tagSidebars' => $tagSidebars, 'userSidebars' => $userSidebars]);
         });
+
+        
+
+        
     }
 
     /**

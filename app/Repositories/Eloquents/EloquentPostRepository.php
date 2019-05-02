@@ -14,7 +14,7 @@ class EloquentPostRepository extends EloquentBaseRepository implements PostRepos
 
     public function paginate() {
 
-    	return $this->model->with(['user.images', 'images'])->orderBy('id', 'DESC')->paginate();
+    	return $this->model->with(['user.images', 'images'])->where('status', 1)->orderBy('id', 'DESC')->paginate();
     }
 
     public function all() {
@@ -24,7 +24,7 @@ class EloquentPostRepository extends EloquentBaseRepository implements PostRepos
 
     public function findBySlug($slug) {
 
-        return $this->model->with(['images', 'user', 'tags'])->where('slug', $slug)->first();
+        return $this->model->with(['images', 'user', 'tags'])->where('slug', $slug)->orderBy('id', 'DESC')->first();
     }
 
     public function findByFeaturedNews() {

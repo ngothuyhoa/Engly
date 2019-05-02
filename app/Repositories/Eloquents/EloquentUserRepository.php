@@ -12,6 +12,11 @@ class EloquentUserRepository extends EloquentBaseRepository implements UserRepos
         $this->model = $model;
     }
 
+     public function all() {
+
+        return $this->model->orderBy('id', 'DESC')->get();
+    }
+
     public function paginate() {
 
     	return $this->model->orderBy('id', 'DESC')->paginate();

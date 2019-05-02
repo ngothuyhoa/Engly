@@ -11,7 +11,9 @@ class RepositoryServiceProvider extends ServiceProvider
     protected $models = [
         'Post',
         'Tag',
-        'User'
+        'User',
+        'Feedback',
+        'Report'
     ];
     public function boot()
     {

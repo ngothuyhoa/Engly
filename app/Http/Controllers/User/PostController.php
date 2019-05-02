@@ -46,7 +46,7 @@ class PostController extends Controller
      */
     public function create()
     {
-        //
+        return view('page_user.post.create');
     }
 
     /**

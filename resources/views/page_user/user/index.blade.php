@@ -12,22 +12,21 @@
               <p><a href="">{{ $user->email }}</a></p>
             </div>
         </div>
-        <div class="media">
-            <div class="media-left">
-                <div class="subscribe">
-                    <button class="btn btn-info btn-sm follow">
-                    + Follow
-                    </button>
+        @if(!$auth || ($auth->name != $user->name))
+            <div class="media">
+                <div class="media-left">
+                    <div class="subscribe">
+                        <button class="btn btn-info btn-sm follow">
+                        + Follow
+                        </button>
+                    </div>
                 </div>
             </div>
-        </div>
+        @endif
         </div>
     </div>
-    <hr>
-    <h3>List Post</h3>
     <div class="content-user-list">
-        @include('page_user.post.post_paginate')
-    <hr>
+        @include('page_user.user.user_post_paginate')
     </div>    
 </div>
 

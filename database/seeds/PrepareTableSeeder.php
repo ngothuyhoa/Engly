@@ -4,6 +4,8 @@ use Illuminate\Database\Seeder;
 use App\Post;
 use App\Tag;
 use App\User;
+use App\Feedback;
+use App\Report;
 
 class PrepareTableSeeder extends Seeder
 {
@@ -22,8 +24,8 @@ class PrepareTableSeeder extends Seeder
 	            $tags->random(rand(5, 10))->pluck('id')->toArray()
 	        );
 	    });
-
         $images = factory(App\Image::class, 50)->create();
-
+        $feedback = factory(App\Feedback::class, 30)->create();
+        $report = factory(App\Report::class, 30)->create();
     }
 }

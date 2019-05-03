@@ -25,7 +25,8 @@ Auth::routes();
 Route::get('/post', 'User\PostController@index')->name('post');
 Route::get('/post/{slug}', 'User\PostController@show')->name('post_detail');
 Route::get('/find_tag/{slug}', 'User\PostController@findByTag')->name('find_tag');
-Route::get('/test', 'User\PostController@create')->name('post_create');
+Route::get('/create_post', 'User\PostController@create')->name('post_create');
+Route::post('/store_post', 'User\PostController@store')->name('post_store');
 
 //User
 

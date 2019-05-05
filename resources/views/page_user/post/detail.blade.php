@@ -48,7 +48,7 @@
                   </div>
                 </div>
             <div class="content" style="">
-                {{ $post->content }}
+                {!! $post->content !!}
             </div>
         </article>
     </div> 

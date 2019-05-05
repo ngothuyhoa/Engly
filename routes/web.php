@@ -12,7 +12,6 @@
 */
 
 Route::get('/', 'User\HomeController@index')->name('home');
-Route::get('/post', 'User\PostController@index')->name('post');
 Route::get('/post_featured', 'User\PostController@indexFeatured')->name('post_featured');
 Route::get('user/{username}', 'User\UserController@show')->name('user_detail');
 

@@ -37,5 +37,10 @@ class EloquentPostRepository extends EloquentBaseRepository implements PostRepos
         return $this->model->with(['user.images', 'images'])->orderBy('view', 'DESC')->paginate();
     }
 
+    public function createImage($id, $data = [])
+    {
+        return $this->model->find($id)->images()->create($data);
+    }
+
     
 }

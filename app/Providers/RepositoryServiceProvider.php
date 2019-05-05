@@ -13,7 +13,8 @@ class RepositoryServiceProvider extends ServiceProvider
         'Tag',
         'User',
         'Feedback',
-        'Report'
+        'Report',
+        'Image'
     ];
     public function boot()
     {

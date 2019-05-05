@@ -20,12 +20,12 @@ class Image extends Model
         return $this->morphTo();
     }
 
-    public function Post()
+    public function post()
     {
         return $this->morphedByMany(Post::class, 'taggable');
     }
 
-    public function User()
+    public function user()
     {
         return $this->morphedByMany(User::class, 'taggable');
     }

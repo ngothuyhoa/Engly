@@ -1718,11 +1718,11 @@ ol {
 }
 #nav-warp-id {
     width: 80%;
-    padding-right: 50px;
+    padding-right: 150px;
 }
 #dropdown-id {
     float: right;
-    margin-top: 20px;
+    margin-top: 2px;
 }
 #dropdown-toggle-id {
     background: #0d0d29;
@@ -1733,4 +1733,14 @@ ol {
     background: white;
     border: 0px;
     
+}
+#form-post{
+	margin-top: 100px;
+	padding-bottom: 20px;
+    height: 100%;
+    box-shadow: 1px 4px 10px 3px rgba(199,197,199,1);
+}
+#header-post{
+	box-shadow: 1px 4px 10px 3px rgba(199,197,199,1);
+	color: black;
 }

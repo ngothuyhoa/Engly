@@ -6,6 +6,10 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Contracts\Repositories\PostRepository;
 use App\Contracts\Repositories\TagRepository;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\UploadedFile;
+use App\Tag;
+use App\Post;
 
 class PostController extends Controller
 {
@@ -57,7 +61,54 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        dd($request->all());
+        //dd(Auth::user());
+        /*$this->validate(
+        );*/
+        //dd($request->all());
+        //check tag exists and insert
+        $idTags= [];
+        $nameTags = explode(',', $request->tag);
+        foreach ($nameTags as $nameTag) {
+            $tag = Tag::where('name', '=', $nameTag)->first(); 
+            if ($tag === null) {
+                $tag = $this->tagRepository->store([
+                    'name' => $nameTag,
+                    'slug' => str_slug($nameTag)
+                ]);
+            }   
+            array_push($idTags, $tag->id);
+        }
+        //insert post
+        $data = [
+            'user_id' => Auth::user()->id,
+            'title' => $request->title,
+            'content' => $request->content,
+            'view' => 0,
+            'vote' => 0,
+            'slug' => str_slug($request->title),
+            'status' => $request->status
+        ];
+
+        $post = $this->postRepository->store($data);
+
+        // insert image
+        if ($request->hasFile('image')) {
+            
+            $Image = $request->file('image');
+            $name = time(). '.' .$Image->getClientOriginalExtension();
+            $ImageDesPath = public_path('/post_image');
+            $Image->move($ImageDesPath, $name);
+
+            $image = $this->postRepository->createImage(
+                $post->id,
+                ['url' => '/post_image' . '/' . $name]
+            );
+        }
+
+        $post->tags()->sync($idTags);
+        
+
+        return redirect()->route('post_detail', ['slug' => $data['slug']]);
     }
 
     /**

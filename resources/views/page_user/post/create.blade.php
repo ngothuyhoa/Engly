@@ -8,29 +8,61 @@
 		<!-- include summernote css/js-->
 		<link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.9/summernote.css" rel="stylesheet">
 		<!-- Tag input -->
-		<link rel="stylesheet" href="/assets/admin/css/bootstrap-tagsinput.css">
-		
-		
+		<link rel="stylesheet" href="/assets/css/bootstrap-tagsinput.css">
+		<link rel="stylesheet" href="/assets/css/style.css">	
 	</head>
 	<body>
-		<div class="container-fluid">
+		@include('page_user.layout.header')
+		<div class="container">
 			<div class="row">
 				<!-- left column -->
-				<div class="col-md-12">
-					<form action="{{route('post_store')}}" method="POST">
+				<div class="col-md-12" id="form-post">
+					<form action="{{route('post_store')}}" method="POST" enctype="multipart/form-data">
 					        {{ csrf_field() }}
+
 				        <div class="form-group">
-							<label>Title</label>
-							<input type="text" name="title" class="form-control" placeholder="Enter Title">
+				        	<div class="col-md-1" style=" padding-top: 5px; font-weight: bold;">
+				        		Title:
+				        	</div>
+				        	<div class="col-md-5">
+				        		<input type="text" name="title" class="form-control" placeholder="Enter Title">
+				        	</div>
+							
 						</div>
 						<div class="form-group">
-						    <label>Tag</label>
-						    <input type="text" value="" data-role="tagsinput" class="form-control" name="tag" />
+
+						    <div class="col-md-1" style="text-align: right; padding-top: 5px; font-weight: bold;">
+				        		Tag:
+				        	</div>
+				        	<div class="col-md-4">
+				        		<input style="margin-top: 10px;width: 600px" class="typeahead" type="text" data-role="tagsinput" name="tag" placeholder="Enter Tag"/>
+				        	</div>    
+						    
 						</div>
-					    <textarea name="summernoteInput" class="summernote"></textarea>
+						<div class="col-md-10" style="margin-top: 15px;">
+							<textarea name="content" class="summernote" style="width: 80%"></textarea>
+						
 					    <br>
-					    <button type="submit">Submit</button>
+					    <div class="col-md-1" style="font-weight: bold;"> Image: </div>
+					    <div class="col-md-11">
+					    	<div class="form-group">
+							    <input type="file" class="form-control-file" name="image" accept="image/*">
+
+							</div>
+					    </div>
+					    <div class="col-md-1" style="font-weight: bold;"> Option: </div>
+					    <div class="col-md-11">
+					    	<div class="form-group">				                
+					            <input type="radio" name="status" value="0" checked>Draft</input>
+								<input type="radio" name="status" value="1"> Public </input>               
+				        	</div>
+					    </div>
+					   
+				        
+					    <button type="submit" class="btn btn-info">Info</button>
+					    </div>
 					</form>
+
 				</div>
 			</div>
 		</div>
@@ -38,12 +70,15 @@
 		<script src="https://netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.9/summernote.js"></script>    
 		<!-- Tag Input -->
-		<script src="/assets/admin/js/bootstrap-tagsinput.min.js"></script>
+		<script src="/assets/js/bootstrap-tagsinput.js"></script>
+		<script src="/assets/js/typeahead.bundle.js"></script>
 		<script>
 		        $(document).ready(function() {
 		            $('.summernote').summernote();
 		        });
 		</script>
+		
+		
 	</body>
 </html>
 

@@ -13,6 +13,7 @@
 	</head>
 	<body>
 		@include('page_user.layout.header')
+		<h3 class="text-center" style="margin-top: 70px">Create new Post</h3>
 		<div class="container">
 			<div class="row">
 				<!-- left column -->

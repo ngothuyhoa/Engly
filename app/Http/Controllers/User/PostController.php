@@ -124,7 +124,7 @@ class PostController extends Controller
         /*foreach ($post->tags as $tag) {
            dump($tag);
         }*/
-
+        
         return View('page_user.post.detail', compact('post'));
     }
 

@@ -271,7 +271,6 @@ button.accordion.active:after {
 .content-user {
     height: 100%;
     padding-top: 20px;
-    background: white;
     margin-top: 30px;
 }
 
@@ -331,4 +330,11 @@ button.accordion.active:after {
     font-weight: bold;
 }
 
+#content-post {
+    background: white;
+    -moz-box-shadow: 1px 2px 4px rgba(0, 0, 0,0.5);
+    -webkit-box-shadow: 1px 2px 4px rgba(0, 0, 0, .5);
+    box-shadow: 1px 2px 4px rgba(0, 0, 0, .5);
+    padding: 10px 10px 10px 25px;
+}
 

@@ -33,6 +33,10 @@ Route::post('/store_post', 'User\PostController@store')->name('post_store');
 	return view('admin.dashboard.index');
 });*/
 
+//Comment
+Route::post('/comment/store', 'User\CommentController@store')->name('comment_store');
+Route::post('/reply/store', 'User\CommentController@replyStore')->name('reply_store');
+
 //Admin
 Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () {
     Route::get('/', 'DashboardController@index')->name('dashboard');

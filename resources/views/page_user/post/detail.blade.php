@@ -1,8 +1,7 @@
 @extends('page_user.layout.index')
 @section('content')
 <div class="col-lg-12 content-user">
-	
-    <div class="detail-article">
+    <div class="detail-article" id="content-post">
         <article>
             <div class="row">
                 <div class="col-md-3 col-sm-3">
@@ -52,8 +51,8 @@
             </div>
         </article>
     </div> 
-    <div class="fb-comments" data-href="{{ url()->current() }}" data-width="850" data-numposts="5"></div>
-
+ 
+    @include('page_user.comment.comment')
 </div>
 
 @endsection

@@ -25,12 +25,17 @@ class Post extends Model
 
     public function user()
     {
-        return $this->belongsTo('App\User');
-    }
+        return $this->belongsTo(User::class);
+    }   
 
     public function images()
     {
         return $this->morphMany(Image::class, 'imageable');
+    }
+
+    public function comments()
+    {
+        return $this->morphMany(Comment::class, 'commentable')->whereNull('parent_id')->orderBy('id', 'DESC');
     }
 
     public function scopePublished($query)

@@ -1735,7 +1735,7 @@ ol {
     
 }
 #form-post{
-	margin-top: 100px;
+	margin-top: 10px;
 	padding-bottom: 20px;
     height: 100%;
     box-shadow: 1px 4px 10px 3px rgba(199,197,199,1);
@@ -1743,4 +1743,9 @@ ol {
 #header-post{
 	box-shadow: 1px 4px 10px 3px rgba(199,197,199,1);
 	color: black;
+}
+#comment {
+    	
+    box-shadow: 1px 4px 10px 3px rgba(199,197,199,1);
+    
 }

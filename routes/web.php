@@ -10,7 +10,11 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+//Login
+Route::get('/redirect/{social}', 'User\SocialAuthController@redirect');
+Route::get('/callback/{social}', 'User\SocialAuthController@callback');
 
+//
 Route::get('/', 'User\HomeController@index')->name('home');
 Route::get('/post_featured', 'User\PostController@indexFeatured')->name('post_featured');
 Route::get('user/{username}', 'User\UserController@show')->name('user_detail');

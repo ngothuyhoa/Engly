@@ -24,7 +24,7 @@ class SocialAccountService
             $user = User::whereEmail($email)->first();
 
             if (!$user) {
-                $username = User::whereName(convertString($providerUser->getName()));
+                $username = User::whereName(convertString($providerUser->getName()))->first();
                 if($username == null) {
                     $name = convertString($providerUser->getName());
                 }

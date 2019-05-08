@@ -29,8 +29,8 @@
                 <div class="col-md-3 col-sm-3">
 		                <div class="social">
 		                    <span> <strong> Share by </strong></span>
-		                    <a class="facebook" target="_blank" href=""><img src=""> </a>
-		                    <a class="ggplus" target="_blank" href=""> <img src=""></a>
+		                    <a class="facebook" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u={{ url()->current() }}"><img src=""> </a>
+		                    <a class="ggplus" target="_blank" href="https://plus.google.com/share?url={{ url()->current() }}"> <img src=""></a>
 		                </div>
             	
                 </div>

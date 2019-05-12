@@ -8,7 +8,7 @@ class Feedback extends Model
 {
     protected $table = 'feedbacks';
     protected $fillable = [
-        'name', 'content'
+        'user_id', 'content'
     ];
 
     protected $perPage;
@@ -16,6 +16,11 @@ class Feedback extends Model
     {
         parent::__construct($attributes);
         $this->perPage = config('paginate.feedback');
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
     }
 
 }

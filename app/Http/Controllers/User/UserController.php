@@ -59,14 +59,15 @@ class UserController extends Controller
         $title = config('blog.list_post');
 
         $auth = Auth::user();
-        if(Auth::check() && $auth->name == $username){  
-            $user = $auth;
+        if(Auth::check() && $auth->username == $username){  
+            $username = $auth->username;
+            $user = $this->userRepository->findByUserName($username);
             $posts = $auth->posts()->orderBy('id', 'DESC')->paginate();
             $postPublic = $auth->posts()->orderBy('id', 'DESC')->where('status', 1)->paginate();
             $postDraft = $auth->posts()->orderBy('id', 'DESC')->where('status', 0)->paginate();
            
         } else {
-            $user = $this->userRepository->findBySlug($username);
+            $user = $this->userRepository->findByUserName($username);
             $posts = $user->posts()->where('status', '1')->orderBy('id', 'DESC')->paginate();  
         }
         if ($request->ajax()) {

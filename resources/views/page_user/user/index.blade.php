@@ -5,14 +5,17 @@
         <div class="d-flex justify-content-center"> 
         <div class="media">
             <div class="media-left">
-              <img src="/assets/img/footer-thumb/1.jpg" class="media-object">
+                @foreach($user->images as $image)
+                    <img src="{{$image->url}}" class="media-object">
+                    @break
+                @endforeach
             </div>
             <div class="media-body">
               <h5 class="media-heading">{{ $user->fullname }}</h5>
               <p><a href="">{{ $user->email }}</a></p>
             </div>
         </div>
-        @if(!$auth || ($auth->name != $user->name))
+        @if(!$auth || ($auth->username != $user->username))
             <div class="media">
                 <div class="media-left">
                     <div class="subscribe">

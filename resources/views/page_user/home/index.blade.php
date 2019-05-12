@@ -52,7 +52,7 @@
 						<img class="user-small-img" src="{{ $image->url }}">
 						@break
 						@endforeach
-						<a href="{{ route('user_detail', $post->user->name)}}">
+						<a href="{{ route('user_detail', $post->user->username)}}">
 							<span style="font-size: 12px;color: #fff;">{{ $post->user->fullname }}</span>  	
 						</a>                 
 					</div>
@@ -99,7 +99,7 @@
 							<img class="user-small-img" src="{{ $image->url }}">
 							@break
 							@endforeach
-							<a href="{{ route('user_detail', $post->user->name)}}">
+							<a href="{{ route('user_detail', $post->user->username)}}">
 								<span style="font-size: 12px;color: #fff;">{{ $post->user->fullname }}</span>
 							</a>                    
 						</div>

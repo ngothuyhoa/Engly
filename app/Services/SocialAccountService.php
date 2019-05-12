@@ -4,15 +4,17 @@ namespace App\Services;
 use Laravel\Socialite\Contracts\User as ProviderUser;
 use App\SocialAccount;
 use App\User;
+use App\Image;
 
 class SocialAccountService
 {
     public static function createOrGetUser(ProviderUser $providerUser, $social)
     {
+
         $account = SocialAccount::whereProvider($social)
             ->whereProviderUserId($providerUser->getId())
             ->first();
-
+           
         if ($account) {
             return $account->user;
         } else {
@@ -24,7 +26,7 @@ class SocialAccountService
             $user = User::whereEmail($email)->first();
 
             if (!$user) {
-                $username = User::whereName(convertString($providerUser->getName()))->first();
+                $username = User::where('username', convertString($providerUser->getName()))->first();
                 if($username == null) {
                     $name = convertString($providerUser->getName());
                 }
@@ -34,9 +36,17 @@ class SocialAccountService
                 $user = User::create([
                     'fullname' =>$providerUser->getName(),
                     'email' => $email,
-                    'name' => $name,
+                    'username' => $name,
                     'password' => $providerUser->getName(),
                 ]);
+
+                $image = Image::create([
+                    'url' => $providerUser->getAvatar(),
+                    'imageable_id' => $user->id,
+                    'imageable_type' => 'App\User'
+                ]);
+
+                
             }
 
             $account->user()->associate($user);

@@ -11,41 +11,63 @@
                     @endforeach 
                 </div>
                 <div class="col-md-9 col-sm-9">
-                    <div id="title_news"><h4>{{ $post->title }}</h4></div>
-                    <p>
-                    	<span class="create-date">{{ $post->user->fullname }}</span>
-                    	<span class="create-date" style="font-size: 12px">: {{ $post->user->name }}</span>
-                    </p>
-                    <span style="font-size: 12px" class="create-date">{{ date('d/m/Y H:i:s', strtotime($post->updated_at)) }}</span>
+                    <div id="title_news">
+                        {{ $post->title }} 
+                        <p>
+                        	<span class="create-date">{{ $post->user->fullname }}</span>
+                        	| @<span class="create-date" style="font-size: 12px">{{ $post->user->username }}</span>
+                             | <span style="font-size: 12px" class="create-date">{{ date('d/m/Y H:i:s', strtotime($post->updated_at)) }}</span>
+                        </p>        
+                    </div>
+                    <div class="row" id="share">
+                        <div class="col-md-3 col-sm-3">
+                            <div class="social">
+                                <a class="facebook" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u={{ url()->current() }}"><i class="fa fa-facebook-f"></i></a>
+                                <a class="ggplus" target="_blank" href="https://plus.google.com/share?url={{ url()->current() }}"> <i class="fa fa-google-plus"></i></a>
+                            </div> 
+                        </div>
+                        @if(Auth::user()->username == $post->user->username)
+                        <div class="col-md-1 col-sm-1" >
+                            <div class="dropdown" id="edit">
+                                <button class="btn" type="button" data-toggle="dropdown" style="margin-right:20px; font-size: 24px; background: white; color: orange">
+                                 <i class="fa fa-edit"></i>
+                                </button>
+                                <ul class="dropdown-menu" style="padding-left: 20px">
+                                    <li>
+                                        <form method="post" action="{{ route('post_public', $post->id) }}">
+                                            <input type="hidden" name="_token" value="{{csrf_token()}}">
+                                            <button class="edit-button" type="submit">Public</button>
+                                        </form>
+                                    </li>
+                                    <li>
+                                        <form method="post" action="{{ route('post_draft', $post->id) }}">
+                                            <input type="hidden" name="_token" value="{{csrf_token()}}">
+                                            <button class="edit-button">Draft</button>
+                                        </form>
+                                    </li>
+                                    <li><a href="#">Edit</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        @endif
+                        @if($post->status == 0)
+                        <div class="col-md-1 col-sm-1" style="padding-top: 13px ">
+                            <i class="fa fa-lock"></i>  
+                        </div>
+                        @endif
+                    </div>                      
                 </div>
             </div>
+
             <div class="row share-news">
-                <div class="col-md-9 col-sm-9">
-                	<a href=""><label class="label label-primary" id="tag">Tags :</label></a>
+                <div class="col-md-12 col-sm-12">
+                	<a href=""><label class="label label-primary" >Tags :</label></a>
             		@foreach($post->tags as $tag)
-            			<a class="btn btn-light tag_post" href="{{route('find_tag', $tag->slug)}}">{{ $tag->name }}</a>
+            			<a id="tag" class="btn btn-outline-info" href="{{route('find_tag', $tag->slug)}}">{{ $tag->name }}</a>
            			@endforeach
                 </div>
-                <div class="col-md-3 col-sm-3">
-		                <div class="social">
-		                    <span> <strong> Share by </strong></span>
-		                    <a class="facebook" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u={{ url()->current() }}"><img src=""> </a>
-		                    <a class="ggplus" target="_blank" href="https://plus.google.com/share?url={{ url()->current() }}"> <img src=""></a>
-		                </div>
-            	
-                </div>
             </div>
-            <div class="row justify-content-md-end">
-                <div class="dropdown">
-                    <button class="btn dropdown-toggle" type="button" data-toggle="dropdown" style="background: white">
-                    <span class="caret"></span></button>
-                    <ul class="dropdown-menu">
-                      <li><a href="#">HTML</a></li>
-                      <li><a href="#">CSS</a></li>
-                      <li><a href="#">JavaScript</a></li>
-                    </ul>
-                  </div>
-                </div>
+            
             <div class="content" style="">
                 {!! $post->content !!}
             </div>

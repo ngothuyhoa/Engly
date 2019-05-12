@@ -5,12 +5,12 @@
 	<div class="container-fluid">
 		<div class="row mb-2">
 			<div class="col-sm-6">
-				<h1>Feedback</h1>
+				<h1>User</h1>
 			</div>
 			<div class="col-sm-6">
 				<ol class="breadcrumb float-sm-right">
 					<li class="breadcrumb-item"><a href="#">Admin</a></li>
-					<li class="breadcrumb-item active">List Feedback</li>
+					<li class="breadcrumb-item active">List User</li>
 				</ol>
 			</div>
 		</div>
@@ -40,7 +40,7 @@
 							@foreach($users as $user)
 							<tr>
 								<td>{{ $user->fullname }}</td>
-								<td>{{ $user->name }}</td>
+								<td>{{ $user->username }}</td>
 								<td>{{ $user->email }}</td>
 								<td>
 									<a href="" class="btn btn-warning m-btn m-btn--icon m-btn--icon-only">

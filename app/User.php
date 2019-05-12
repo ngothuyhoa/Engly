@@ -16,7 +16,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'fullname', 'name', 'email', 'password',
+        'fullname', 'username', 'email', 'password',
     ];
 
     /**
@@ -33,6 +33,16 @@ class User extends Authenticatable
     {
         parent::__construct($attributes);
         $this->perPage = config('paginate.user');
+    }
+
+     /**
+     * Checks if user is a super admin
+     *
+     * @return boolean
+     */
+    public function isSuperAdmin() : bool
+    {
+        return (bool) $this->is_super_admin;
     }
 
     public function posts()
@@ -70,5 +80,30 @@ class User extends Authenticatable
     public function inRole(string $roleSlug)
     {
         return $this->roles()->where('slug', $roleSlug)->count() == 1;
+    }
+
+        /**
+     * Create admin.
+     *
+     * @param array $details
+     * @return array
+     */
+    public function createSuperAdmin(array $details) : self
+    {
+        $user = new self($details);
+        if (! $this->superAdminExists()) {
+            $user->is_super_admin = 1;
+        }
+        $user->save();
+        return $user;
+    }
+    /**
+     * Checks if super admin exists
+     *
+     * @return integer
+     */
+    public function superAdminExists() : int
+    {
+        return self::where('is_super_admin', 1)->count();
     }
 }

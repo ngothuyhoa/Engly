@@ -15,6 +15,7 @@ class AddFullnameToUsersTable extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             $table->string('fullname');
+            $table->unsignedTinyInteger('is_super_admin')->default(0);
         });
     }
 

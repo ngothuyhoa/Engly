@@ -30,6 +30,8 @@ Route::get('/post/{slug}', 'User\PostController@show')->name('post_detail');
 Route::get('/find_tag/{slug}', 'User\PostController@findByTag')->name('find_tag');
 Route::get('/create_post', 'User\PostController@create')->name('post_create');
 Route::post('/store_post', 'User\PostController@store')->name('post_store');
+Route::post('/draft_post/{id}', 'User\PostController@draft')->name('post_draft');
+Route::post('/public_post/{id}', 'User\PostController@public')->name('post_public');
 
 //User
 
@@ -42,7 +44,12 @@ Route::post('/comment/store', 'User\CommentController@store')->name('comment_sto
 Route::post('/reply/store', 'User\CommentController@replyStore')->name('reply_store');
 
 //Admin
-Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () {
+
+Route::get('admin/login', 'Admin\AdminLoginController@getLogin')->name('get_login');
+Route::post('admin/login', 'Admin\AdminLoginController@postLogin')->name('post_login');
+Route::get('admin/logout', 'Admin\AdminLoginController@getLogout')->name('get_logout');
+
+Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware'=> 'admin'], function () {
     Route::get('/', 'DashboardController@index')->name('dashboard');
 
     //Post
@@ -62,6 +69,7 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () {
 
     //Report
 	Route::get('report', 'ReportController@index')->name('index_report');
+    Route::get('report/destroy/{id}', 'ReportController@destroy')->name('destroy_report');
 
     //following	
   	Route::get('following', 'FollowingController@index')->name('index_following');

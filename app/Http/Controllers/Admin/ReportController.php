@@ -4,9 +4,27 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Contracts\Repositories\ReportRepository;
+use App\Contracts\Repositories\PostRepository;
+use App\Contracts\Repositories\UserRepository;
 
 class ReportController extends Controller
 {
+
+    protected $reportRepository;
+    protected $postRepository;
+    protected $userRepository;
+    
+    public function __construct(
+        ReportRepository $reportRepository,
+        PostRepository $postRepository,
+        UserRepository $userRepository
+    ) {
+        $this->reportRepository = $reportRepository;
+        $this->postRepository = $postRepository;
+        $this->userRepository = $userRepository;
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -14,7 +32,9 @@ class ReportController extends Controller
      */
     public function index()
     {
-        return view('admin.report.index');
+        $reports = $this->reportRepository->all();
+
+        return view('admin.report.index', compact('reports'));
     }
 
     /**
@@ -80,6 +100,8 @@ class ReportController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $this->reportRepository->delete($id);
+        
+        return redirect('admin/report');
     }
 }

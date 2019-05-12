@@ -51,7 +51,7 @@
 						<tbody>
 							@foreach($posts as $post)
 							<tr>
-								<td>{{ $post->user->name }}</td>
+								<td>{{ $post->user->username }}</td>
 								<td>{{ $post->title }}</td>
 								<td class="text-center">{{ $post->view }}</td>
 								<td class="text-center">{{ $post->vote }}</td>

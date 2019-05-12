@@ -12,9 +12,9 @@ class EloquentUserRepository extends EloquentBaseRepository implements UserRepos
         $this->model = $model;
     }
 
-     public function all() {
+    public function all() {
 
-        return $this->model->orderBy('id', 'DESC')->get();
+        return $this->model->where('is_super_admin', '0')->orderBy('id', 'DESC')->get();
     }
 
     public function paginate() {
@@ -22,8 +22,14 @@ class EloquentUserRepository extends EloquentBaseRepository implements UserRepos
     	return $this->model->orderBy('id', 'DESC')->paginate();
     }
 
-    public function findBySlug($slug) {
+    public function findByUserName($username) {
 
-        return $this->model->with(['posts'])->where('name', $slug)->first();
+        return $this->model->with(['posts', 'images'])->where('username', $username)->first();
     }
+
+    public function allAdmin() {
+
+        return $this->model->where('is_super_admin', '1')->orderBy('id', 'DESC')->get();
+    }
+
 }

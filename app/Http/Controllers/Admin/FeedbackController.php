@@ -23,6 +23,7 @@ class FeedbackController extends Controller
     public function index()
     {
         $feedbacks = $this->feedbackRepository->all();
+       
         return view('admin.feedback.index', compact('feedbacks'));
     }
 

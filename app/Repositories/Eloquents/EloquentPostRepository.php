@@ -27,6 +27,7 @@ class EloquentPostRepository extends EloquentBaseRepository implements PostRepos
         return $this->model->with(['images', 'user', 'tags'])->where('slug', $slug)->orderBy('id', 'DESC')->first();
     }
 
+
     public function findByFeaturedNews() {
 
         return $this->model->with(['user.images', 'images'])->orderBy('view', 'DESC')->paginate();

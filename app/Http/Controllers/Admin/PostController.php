@@ -24,6 +24,7 @@ class PostController extends Controller
     ) {
         $this->postRepository = $postRepository;
         $this->tagRepository = $tagRepository;
+        //$this->middleware('admin');
     }
 
     public function index()

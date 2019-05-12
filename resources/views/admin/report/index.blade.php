@@ -10,7 +10,7 @@
 			<div class="col-sm-6">
 				<ol class="breadcrumb float-sm-right">
 					<li class="breadcrumb-item"><a href="#">Admin</a></li>
-					<li class="breadcrumb-item active">List Feedback</li>
+					<li class="breadcrumb-item active">List Report</li>
 				</ol>
 			</div>
 		</div>
@@ -23,28 +23,32 @@
 		<div class="col-12">
 			<div class="card">
 				<div class="card-header">
-					<h2 class="card-title text-center">List Feedback</h2>
+					<h2 class="card-title text-center">List Report</h2>
 				</div>
 				<!-- /.card-header -->
 				<div class="card-body">
 					<table id="example1" class="table table-bordered table-striped">
 						<thead>
 							<tr>
+								<th>STT</th>
 								<th>Name</th>
-								<th>Contet</th>
+								<th>Post</th>
+								<th>Note</th>
 								<th>Tuy chinh</th>
 							</tr>
 						</thead>
 						<tbody>
-							@foreach($feedbacks as $feedback)
+							@foreach($reports as $report)
 							<tr>
-								<td>{{ $feedback->name }}</td>
-								<td>{{ $feedback->content }}</td>
+								<td>{{ $report->user->id }}</td>
+								<td>{{ $report->user->fullname }}</td>
+								<td>{{ $report->post->title }}</td>
+								<td>{{ $report->note}}</td>
 								<td>
 									<a href="" class="btn btn-warning m-btn m-btn--icon m-btn--icon-only">
                             		<i class="fa fa-edit"></i>
                         			</a>
-                        			<a href="" class="btn btn-danger m-btn m-btn--icon m-btn--icon-only">
+                        			<a href="{{ route('destroy_report', $report->id) }}" class="btn btn-danger m-btn m-btn--icon m-btn--icon-only">
                             		<i class="fa fa-trash"></i>
                         			</a>
 								</td>

@@ -4,17 +4,28 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Contracts\Repositories\UserRepository;
 
 class DashboardController extends Controller
 {
+     protected $userRepository;
+
+    public function __construct(
+        UserRepository $userRepository
+    ) {
+        $this->userRepository = $userRepository;
+    }
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
+    
     public function index()
     {
-        return view('admin.dashboard.index');
+        $admins = $this->userRepository->allAdmin();
+
+        return view('admin.dashboard.index', compact('admins'));
     }
 
     /**

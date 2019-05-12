@@ -16,10 +16,10 @@
     <a href="{{ route('post_detail', $post->slug) }}">
         <h6 class="media-heading">{{ $post->title }}</h6>
     </a>
-    <a href="{{ route('user_detail', $post->user->name)}}">
+    <a href="{{ route('user_detail', $post->user->username)}}">
         <small>
         <i class="fa fa-user" data-original-title="" title=""></i>
-            {{ $post->user->name }}
+            {{ $post->user->username }}
         </small>
     </a>
     <p>

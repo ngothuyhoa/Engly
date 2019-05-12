@@ -17,7 +17,7 @@
                   		<button id="logout">Logout</button>
                   	</form>
                   </li>
-                  <li><a href="{{ route('user_detail', Auth::user()->name) }}">My Post</a></li>
+                  <li><a href="{{ route('user_detail', Auth::user()->username) }}">My Post</a></li>
                   <li><a href="#">My Profile</a></li>
                   <li><a href="{{ route('post_create') }}">Write Post</a></li>
                 </ul>

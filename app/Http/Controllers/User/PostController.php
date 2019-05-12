@@ -190,4 +190,20 @@ class PostController extends Controller
 
         return View('page_user.post.index', compact('posts', 'title'));
     }
+
+    public function draft(Request $request, $id) {
+        $status = $this->postRepository->update($id,[
+            'status' => '0'
+        ]);
+        $post = $this->postRepository->findOrFail($id);
+        return redirect()->route('post_detail', ['slug' => $post->slug]);
+    }
+
+    public function public(Request $request, $id) {
+        $status = $this->postRepository->update($id,[
+            'status' => '1'
+        ]);
+        $post = $this->postRepository->findOrFail($id);
+        return redirect()->route('post_detail', ['slug' => $post->slug]);
+    }
 }

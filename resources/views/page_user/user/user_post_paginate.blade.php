@@ -4,7 +4,7 @@
     <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">List Post</a>
   </li>
   
-  @if($auth && $auth->name == $user->name)
+  @if($auth && $auth->username == $user->username)
   <li class="nav-item">
     <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Public</a>
   </li>
@@ -33,10 +33,10 @@
             <a href="{{ route('post_detail', $post->slug) }}">
                 <h6 class="media-heading">{{ $post->title }}</h6>
             </a>
-            <a href="{{ route('user_detail', $post->user->name)}}">
+            <a href="{{ route('user_detail', $post->user->username)}}">
                 <small>
                 <i class="fa fa-user" data-original-title="" title=""></i>
-                    {{ $post->user->name }}
+                    {{ $post->user->username }}
                 </small>
             </a>
             <p>
@@ -65,7 +65,7 @@
             </div>
         </div>
     </div>
-    @if($auth && $auth->name == $user->name)
+    @if($auth && $auth->username == $user->username)
     <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
         @foreach($postPublic as $postP)
         <div class="media">
@@ -85,10 +85,10 @@
             <a href="{{ route('post_detail', $post->slug) }}">
                 <h6 class="media-heading">{{ $postP->title }}</h6>
             </a>
-            <a href="{{ route('user_detail', $post->user->name)}}">
+            <a href="{{ route('user_detail', $post->user->username)}}">
                 <small>
                 <i class="fa fa-user" data-original-title="" title=""></i>
-                    {{ $postP->user->name }}
+                    {{ $postP->user->username }}
                 </small>
             </a>
             <p>
@@ -136,10 +136,10 @@
             <a href="{{ route('post_detail', $post->slug) }}">
                 <h6 class="media-heading">{{ $postD->title }}</h6>
             </a>
-            <a href="{{ route('user_detail', $post->user->name)}}">
+            <a href="{{ route('user_detail', $post->user->username)}}">
                 <small>
                 <i class="fa fa-user" data-original-title="" title=""></i>
-                    {{ $postD->user->name }}
+                    {{ $postD->user->username }}
                 </small>
             </a>
             <p>

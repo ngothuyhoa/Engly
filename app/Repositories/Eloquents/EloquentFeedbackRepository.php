@@ -19,7 +19,7 @@ class EloquentFeedbackRepository extends EloquentBaseRepository implements Feedb
 
     public function all() {
 
-    	return $this->model->orderBy('id', 'DESC')->get();
+    	return $this->model->with('user')->orderBy('id', 'DESC')->get();
     }
 
     

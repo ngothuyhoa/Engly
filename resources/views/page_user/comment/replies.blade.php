@@ -1,9 +1,9 @@
 @foreach($comments as $comment)
     <div class="display-comment" style="margin-left: 30px">
-        <strong>{{ $comment->user->name }}</strong>
+        <strong>{{ $comment->user->username }}</strong>
         <p>{{ $comment->body }}</p>
         <a href="" id="reply">Reply</a> 
-        <form id="test" style="display:none;" method="post" action="{{ route('reply_store') }}">
+        <form id="test" method="post" action="{{ route('reply_store') }}">
             @csrf
             <div class="form-group">
                 <input type="text" name="comment_body" class="form-control" />

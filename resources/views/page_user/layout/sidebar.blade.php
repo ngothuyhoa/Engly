@@ -12,7 +12,7 @@
     			    </div>
     			    <div class="media-body">
     			      <h6 class="media-heading">{{ $userSidebar->fullname }}</h6>
-    			      <p><a href="">{{ $userSidebar->name }}</a></p>
+    			      <p><a href="{{ route('user_detail', $userSidebar->username)}}">{{ $userSidebar->username }}</a></p>
     			    </div>
     			</div>
     			<div class="media">

@@ -43,7 +43,7 @@
 						<tbody>
 							@foreach($feedbacks as $feedback)
 							<tr style="background: white">
-								<td><input class="input-feedback" type="text" name="name" value="{{ $feedback->name }}"></td>
+								<td><input class="input-feedback" type="text" name="name" value="{{ $feedback->user->username }}"></td>
 								<td><textarea class="input-feedback">{{ $feedback->content }}</textarea></td>
 								<td class="text-center">
 									<a href="" class="btn btn-warning m-btn m-btn--icon m-btn--icon-only">

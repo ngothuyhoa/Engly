@@ -43,7 +43,7 @@
 							<i class="fa fa-calendar" data-original-title="" title=""></i> {{ $post->updated_at }}
 						</small>
 						<span class="pull-right">
-							<a href="#" data-toggle="tooltip" data-placement="left" title="Comments">	<i class="fa fa-comments" ></i> 3</a>
+							<a href="#" data-toggle="tooltip" data-placement="left" title="Comments">	<i class="fa fa-comments" ></i> {{count($post->comments)}}</a>
 							<a href="#" data-toggle="tooltip" data-placement="right" title="Eye"><i class="fa fa-eye"></i> {{ $post->view }}</a>                  
 						</span>
 					</div>

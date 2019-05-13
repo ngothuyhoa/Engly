@@ -26,7 +26,7 @@
                                 <a class="ggplus" target="_blank" href="https://plus.google.com/share?url={{ url()->current() }}"> <i class="fa fa-google-plus"></i></a>
                             </div> 
                         </div>
-                        @if(Auth::user()->username == $post->user->username)
+                        @if(Auth::check() && Auth::user()->username == $post->user->username)
                         <div class="col-md-1 col-sm-1" >
                             <div class="dropdown" id="edit">
                                 <button class="btn" type="button" data-toggle="dropdown" style="margin-right:20px; font-size: 24px; background: white; color: orange">

@@ -42,7 +42,7 @@
         <h2 class="title-widget-sidebar"> LIST TAGS</h2>
        	<div class="content-widget-sidebar">
             @foreach($tagSidebars as $tagSidebar)
-            <button id="tag" type="button" class="btn btn-light">{{ $tagSidebar->name }}</button>
+            <a id="tag" class="btn btn-outline-info" href="{{route('find_tag', $tagSidebar->slug)}}">{{ $tagSidebar->name }}</a>
             @endforeach
         	<!-- <ul>
                             <li class="recent-post">

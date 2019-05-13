@@ -33,6 +33,8 @@ Route::post('/store_post', 'User\PostController@store')->name('post_store');
 Route::post('/draft_post/{id}', 'User\PostController@draft')->name('post_draft');
 Route::post('/public_post/{id}', 'User\PostController@public')->name('post_public');
 
+Route::get('/view', 'User\PostController@view')->name('view')->middleware('filter');
+
 //User
 
 /*Route::get('admin', function(){
@@ -42,6 +44,9 @@ Route::post('/public_post/{id}', 'User\PostController@public')->name('post_publi
 //Comment
 Route::post('/comment/store', 'User\CommentController@store')->name('comment_store');
 Route::post('/reply/store', 'User\CommentController@replyStore')->name('reply_store');
+
+//Search
+Route::get('search/query', 'User\SearchController@query')->name('search');
 
 //Admin
 

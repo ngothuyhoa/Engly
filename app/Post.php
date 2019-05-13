@@ -3,9 +3,12 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Laravel\Scout\Searchable;
+
 
 class Post extends Model
 {
+    use Searchable;
 	protected $table = 'posts';
     protected $fillable = [
         'user_id', 'title', 'content', 'view', 'vote', 'status', 'slug'
@@ -46,5 +49,17 @@ class Post extends Model
     public function scopeUnpublished($query)
     {
         return $query->where('published', false);
+    }
+
+    /**
+     * Get the indexable data array for the model.
+     *
+     * @return array
+     */
+    public function toSearchableArray()
+    {
+      $array = $this->toArray();
+         
+      return array('id' => $array['id'],'title' => $array['title'], 'content' => $array['content']);
     }
 }

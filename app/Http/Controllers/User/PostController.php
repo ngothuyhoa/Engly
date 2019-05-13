@@ -7,7 +7,9 @@ use App\Http\Controllers\Controller;
 use App\Contracts\Repositories\PostRepository;
 use App\Contracts\Repositories\TagRepository;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Event;
 use Illuminate\Http\UploadedFile;
+
 use App\Tag;
 use App\Post;
 
@@ -120,6 +122,8 @@ class PostController extends Controller
     public function show($slug)
     {
         $post = $this->postRepository->findBySlug($slug);
+        //dd($post);
+        Event::fire('posts.view', $post);
         
         /*foreach ($post->tags as $tag) {
            dump($tag);

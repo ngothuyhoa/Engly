@@ -17,11 +17,24 @@
     			</div>
     			<div class="media">
     				<div class="media-left">
-    					<div class="subscribe">
-    				  		<button class="btn btn-info btn-sm">
-                    		Follow
-                			</button>
-            			</div>
+    					<div class="subscribe" style="margin-left: 10px">
+                        @if (auth()->user()->isFollowing($userSidebar->id))         
+                        <form action="{{route('unfollow', ['id' => $userSidebar->id])}}" method="POST">
+                            {{ csrf_field() }}
+
+                            <button type="submit" id="delete-follow-{{ $userSidebar->id }}" class="btn btn-danger">
+                                <i class="fa fa-btn fa-trash"></i>Unfollow
+                            </button>
+                        </form>
+                        @else
+                        <form action="{{route('follow', ['id' => $userSidebar->id])}}" method="POST">
+                            {{ csrf_field() }}
+                            <button type="submit" id="follow-user-{{ $userSidebar->id }}" class="btn btn-success">
+                                <i class="fa fa-btn fa-user"></i>Follow
+                            </button>
+                        </form>
+                        @endif
+                    </div>
             		</div>
                 	<div class="media-body">
     					<span class="stats-item text-muted" data-tippy="" data-original-title="Posts: 32">

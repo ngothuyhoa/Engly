@@ -33,7 +33,9 @@
 		<ul class="main-menu" style="padding-right: 50px">
 			<li><a href="{{ route('home') }}">Home</a></li>
 			<li><a href="{{ route('post') }}">Post</a></li>
+			@if(Auth::check())
 			<li><a href="{{ route('user') }}">User</a></li>
+			@endif
 			<li><a href="./contact.html">Contact</a></li>
 		</ul>
 		<div class="search">

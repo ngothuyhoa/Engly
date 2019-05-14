@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Contracts\Repositories\UserRepository;
 use Illuminate\Support\Facades\Auth;
+use App\User;
 
 class UserController extends Controller
 {
@@ -24,7 +25,11 @@ class UserController extends Controller
 
     public function index()
     {
-        //
+        /*$test =  $this->userRepository->findOrFail(Auth::user()->id)->with();
+        dd($test);*/
+        $users = User::where('id', '!=', auth()->user()->id)->get();
+        //dd($users);
+        return view('page_user.user.index', compact('users'));
     }
 
     /**
@@ -111,5 +116,29 @@ class UserController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function follow(User $user)
+    {
+        $follower = auth()->user();
+        
+        if(!$follower->isFollowing($user->id)) {
+            $follower->follow($user->id);
+
+            // sending a notification
+
+            return back()->withSuccess("You are now friends with {$user->name}");
+        }
+        return back()->withError("You are already following {$user->name}");
+    }
+
+    public function unfollow(User $user)
+    {
+        $follower = auth()->user();
+        if($follower->isFollowing($user->id)) {
+            $follower->unfollow($user->id);
+            return back()->withSuccess("You are no longer friends with {$user->name}");
+        }
+        return back()->withError("You are not following {$user->name}");
     }
 }

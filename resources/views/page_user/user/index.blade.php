@@ -18,10 +18,23 @@
         @if(!$auth || ($auth->username != $user->username))
             <div class="media">
                 <div class="media-left">
-                    <div class="subscribe">
-                        <button class="btn btn-info btn-sm follow">
-                        + Follow
-                        </button>
+                    <div class="subscribe" style="margin-left: 10px">
+                        @if (auth()->user()->isFollowing($user->id))         
+                        <form action="{{route('unfollow', ['id' => $user->id])}}" method="POST">
+                            {{ csrf_field() }}
+
+                            <button type="submit" id="delete-follow-{{ $user->id }}" class="btn btn-danger">
+                                <i class="fa fa-btn fa-trash"></i>Unfollow
+                            </button>
+                        </form>
+                        @else
+                        <form action="{{route('follow', ['id' => $user->id])}}" method="POST">
+                            {{ csrf_field() }}
+                            <button type="submit" id="follow-user-{{ $user->id }}" class="btn btn-success">
+                                <i class="fa fa-btn fa-user"></i>Follow
+                            </button>
+                        </form>
+                        @endif
                     </div>
                 </div>
             </div>

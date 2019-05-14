@@ -14,17 +14,17 @@
 Route::get('/redirect/{social}', 'User\SocialAuthController@redirect');
 Route::get('/callback/{social}', 'User\SocialAuthController@callback');
 
-//
 Route::get('/', 'User\HomeController@index')->name('home');
-Route::get('/post_featured', 'User\PostController@indexFeatured')->name('post_featured');
-Route::get('user/{username}', 'User\UserController@show')->name('user_detail');
 
-Route::get('/user', function () {
-    return view('page_user.user.index');
-})->name('user');
+//User
+Route::get('user', 'User\UserController@index')->name('user');
+Route::get('user/{username}', 'User\UserController@show')->name('user_detail');
+Route::post('users/{user}/follow', 'User\UserController@follow')->name('follow');
+Route::Post('users/{user}/unfollow', 'User\UserController@unfollow')->name('unfollow');
 
 Auth::routes();
 // Post
+Route::get('/post_featured', 'User\PostController@indexFeatured')->name('post_featured');
 Route::get('/post', 'User\PostController@index')->name('post');
 Route::get('/post/{slug}', 'User\PostController@show')->name('post_detail');
 Route::get('/find_tag/{slug}', 'User\PostController@findByTag')->name('find_tag');
@@ -47,6 +47,15 @@ Route::post('/reply/store', 'User\CommentController@replyStore')->name('reply_st
 
 //Search
 Route::get('search/query', 'User\SearchController@query')->name('search');
+
+//Pusher
+
+Route::get('/notification', function () {
+    return view('showNotification');
+});
+
+Route::get('/send', 'SendMessageController@index')->name('send');
+Route::post('/postMessage', 'SendMessageController@sendMessage')->name('postMessage');
 
 //Admin
 

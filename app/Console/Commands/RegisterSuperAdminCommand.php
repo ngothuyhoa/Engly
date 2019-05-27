@@ -77,12 +77,12 @@ class RegisterSuperAdminCommand extends Command
      */
     private function display(User $admin) : void
     {
-        $headers = ['FullName', 'Name', 'Email', 'Super admin'];
+        $headers = ['FullName', 'Name', 'Email', 'Superadmin'];
         $fields = [
             'FullName' => $admin->fullname,
-            'Name' => $admin->name,
+            'Name' => $admin->username,
             'email' => $admin->email,
-            'admin' => $admin->isSuperAdmin()
+            'Superadmin' => $admin->isSuperAdmin()
         ];
         $this->info('Super admin created');
         $this->table($headers, [$fields]);

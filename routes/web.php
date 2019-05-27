@@ -19,8 +19,19 @@ Route::get('/', 'User\HomeController@index')->name('home');
 //User
 Route::get('user', 'User\UserController@index')->name('user');
 Route::get('user/{username}', 'User\UserController@show')->name('user_detail');
-Route::post('users/{user}/follow', 'User\UserController@follow')->name('follow');
-Route::Post('users/{user}/unfollow', 'User\UserController@unfollow')->name('unfollow');
+
+/*Route::get('/pusher','User\UserController@getPusher');
+Route::get('/fire-event', function(){
+    event(new  App\Events\HelloPusherEvent("Hi, I'm Trung Quân. Thanks for reading my article!"));
+     return "Message has been sent.";
+});
+*/
+
+Route::group(['middleware' => ['auth']], function () {
+    Route::post('users/{user}/follow', 'User\UserController@follow')->name('follow');
+    Route::Post('users/{user}/unfollow', 'User\UserController@unfollow')->name('unfollow');
+    Route::get('/notifications', 'User\UserController@notifications');
+});
 
 Auth::routes();
 // Post

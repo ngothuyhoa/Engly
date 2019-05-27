@@ -7,6 +7,8 @@ use App\Http\Controllers\Controller;
 use App\Contracts\Repositories\UserRepository;
 use Illuminate\Support\Facades\Auth;
 use App\User;
+use App\Notifications\UserFollowed;
+use App\Events\HelloPusherEvent;
 
 class UserController extends Controller
 {
@@ -126,6 +128,7 @@ class UserController extends Controller
             $follower->follow($user->id);
 
             // sending a notification
+            $user->notify(new UserFollowed($follower));
 
             return back()->withSuccess("You are now friends with {$user->name}");
         }
@@ -141,4 +144,22 @@ class UserController extends Controller
         }
         return back()->withError("You are not following {$user->name}");
     }
+
+    public function notifications()
+    { 
+       
+        return auth()->user()->unreadNotifications()->limit(5)->get()->toArray();
+    }
+
+    /*public function getPusher() {
+        //event(new HelloPusherEvent("Hi, I'm Trung Quân. Thanks for reading my article!"));
+        var_dump('hello');
+        //return view("demo-pusher");
+    }
+
+    public function fireEvent(){
+     // Truyền message lên server Pusher
+    event(new HelloPusherEvent("Hi, I'm Trung Quân. Thanks for reading my article!"));
+     return "Message has been sent.";
+    }*/
 }

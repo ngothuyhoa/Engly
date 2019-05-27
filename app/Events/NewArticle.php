@@ -9,9 +9,8 @@ use Illuminate\Broadcasting\PresenceChannel;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Broadcasting\InteractsWithSockets;
 use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
-use Illuminate\Http\Request;
 
-class HelloPusherEvent implements ShouldBroadcast
+class NewArticle
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
@@ -20,10 +19,9 @@ class HelloPusherEvent implements ShouldBroadcast
      *
      * @return void
      */
-    public $message;
-    public function __construct($message)
+    public function __construct()
     {
-        $this->message  = $message;
+        //
     }
 
     /**
@@ -33,6 +31,6 @@ class HelloPusherEvent implements ShouldBroadcast
      */
     public function broadcastOn()
     {
-        return new Channel('channel-demo-real-time');
+        return new PrivateChannel('channel-name');
     }
 }

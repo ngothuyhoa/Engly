@@ -1,12 +1,12 @@
 @extends('page_user.layout.index')
 @section('content')
-<div class="col-lg-12 content-user">
+<div class="col-lg-12 content-user" style="background: white">
     <div class="content-widget-sidebar">
         <div class="d-flex justify-content-center"> 
         <div class="media">
             <div class="media-left">
                 @foreach($user->images as $image)
-                    <img src="{{$image->url}}" class="media-object">
+                    <img  src="{{$image->url}}" class="media-object">
                     @break
                 @endforeach
             </div>
@@ -19,7 +19,7 @@
             <div class="media">
                 <div class="media-left">
                     <div class="subscribe" style="margin-left: 10px">
-                        @if (auth()->user()->isFollowing($user->id))         
+                        @if (auth()->check() && auth()->user()->isFollowing($user->id))         
                         <form action="{{route('unfollow', ['id' => $user->id])}}" method="POST">
                             {{ csrf_field() }}
 

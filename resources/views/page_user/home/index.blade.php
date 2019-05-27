@@ -27,11 +27,11 @@
 	            	<a href="{{ route('post_detail', $post->slug) }}">
 	            	@if(count($post->images))
 		            	@foreach($post->images as $image)
-		                	<img src="{{ $image->url }}" class="img-responsive">
+		                	<img style="height: 150px" src="{{ $image->url }}" class="img-responsive">
 		                	@break
 		                @endforeach
 		            @else
-		            	<img src="assets/img/about.jpg" class="img-responsive">
+		            	<img style="height: 150px" src="assets/img/about.jpg" class="img-responsive">
 		            @endif
 
 	                <div class="content-title">
@@ -60,8 +60,8 @@
 	            </aside>
 	        </div>
 	        @endforeach
-	        <div class="col-md-3 offset-md-10" class="view-all"> 
-	        	<a href="{{ route('post') }}" type="button" class="btn btn-primary">Xem Them</a>
+	        <div class="col-md-3 offset-md-10" class="view-all" style="margin-top: 10px"> 
+	        	<a style="border: 0px; border-radius: 15px" href="{{ route('post') }}" type="button" class="btn btn-primary">Xem Them</a>
 	        </div>
 		</div>
 

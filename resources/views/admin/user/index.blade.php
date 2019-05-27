@@ -23,7 +23,7 @@
 		<div class="col-12">
 			<div class="card">
 				<div class="card-header">
-					<h2 class="card-title text-center">List Feedback</h2>
+					<h2 class="card-title text-center">List User</h2>
 				</div>
 				<!-- /.card-header -->
 				<div class="card-body">

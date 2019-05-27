@@ -1,6 +1,6 @@
 @extends('page_user.layout.index')
 @section('content')
-<div class="col-lg-12 content-user">
+<div class="col-lg-12 content-user" style="background: white">
 	<h3>{{ $title }}</h3>
     <hr>
     <div class="content-user-list" id="paginate_post">

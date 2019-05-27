@@ -18,7 +18,7 @@
     			<div class="media">
     				<div class="media-left">
     					<div class="subscribe" style="margin-left: 10px">
-                        @if (auth()->user()->isFollowing($userSidebar->id))         
+                        @if (auth()->check() && auth()->user()->isFollowing($userSidebar->id))         
                         <form action="{{route('unfollow', ['id' => $userSidebar->id])}}" method="POST">
                             {{ csrf_field() }}
 

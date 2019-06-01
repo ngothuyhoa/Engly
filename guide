@@ -1,0 +1,19 @@
+1.Yêu cầu hệ thống
+- PHP >= 7.0
+- Mysql
+- Composer
+- Web server: Apache or nginx
+2. Chạy chương trình
+- B1: Tạo một database có tên "Engly"
+- B2: Mở terminal trong thư mục gốc của dự án
+- B3: Sửa trong file .env 
+	DB_CONNECTION=mysql
+	DB_HOST=127.0.0.1
+	DB_PORT=3306
+	DB_DATABASE=Engly
+	DB_USERNAME=xxxxxx
+	DB_PASSWORD=xxxxxx
+- B4: Chạy câu lệnh tạo dữ liệu "php artisan migrate"
+- B5: Tạo dữ liệu mẫu (có thể tạo hoặc không) "php artisan db:seed"
+- B6: Chạy câu lệnh "php artisan serve"
+- B3: Truy cập http://localhost:8080

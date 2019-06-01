@@ -1,5 +1,15 @@
 @extends('page_user.layout.index')
 @section('content')
+                        @if (session('error'))
+                            <div class="alert alert-danger">
+                                {{ session('error') }}
+                            </div>
+                        @endif
+                        @if (session('success'))
+                            <div class="alert alert-success">
+                                {{ session('success') }}
+                            </div>
+                        @endif
 <div class="col-lg-12 content-user">
     <div class="detail-article" id="content-post">
         <article>
@@ -45,7 +55,13 @@
                                             <button class="edit-button">Draft</button>
                                         </form>
                                     </li>
-                                    <li><a href="#">Edit</a></li>
+                                    <li><a class="edit-button" href="{{ route('post_edit', $post->slug) }}">Edit</a></li>
+                                    <li>
+                                        <form method="post" action="{{ route('post_destroy', $post->id) }}">
+                                            <input type="hidden" name="_token" value="{{csrf_token()}}">
+                                            <button class="edit-button">Delete</button>
+                                        </form>
+                                    </li>
                                 </ul>
                             </div>
                         </div>

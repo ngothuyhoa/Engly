@@ -27,11 +27,11 @@
 	            	<a href="{{ route('post_detail', $post->slug) }}">
 	            	@if(count($post->images))
 		            	@foreach($post->images as $image)
-		                	<img style="height: 150px" src="{{ $image->url }}" class="img-responsive">
+		                	<img style="height: 150px; width: 100%" src="{{ $image->url }}" class="img-responsive">
 		                	@break
 		                @endforeach
 		            @else
-		            	<img style="height: 150px" src="assets/img/about.jpg" class="img-responsive">
+		            	<img style="height: 150px; width: 100%" src="assets/img/about.jpg" class="img-responsive">
 		            @endif
 
 	                <div class="content-title">
@@ -75,11 +75,11 @@
 	            	<a href="{{ route('post_detail', $post->slug) }}" >
 		                @if(count($post->images))
 			            	@foreach($post->images as $image)
-			                	<img src="{{ $image->url }}" class="img-responsive">
+			                	<img style="height: 150px; width: 100%" src="{{ $image->url }}" class="img-responsive">
 			                	@break
 			                @endforeach
 			            @else
-			            	<img src="assets/img/about.jpg" class="img-responsive">
+			            	<img style="height: 150px; width: 100%" src="assets/img/about.jpg" class="img-responsive">
 			            @endif
 		                <div class="content-title">
 							<div class="text-center">
@@ -91,7 +91,7 @@
 							</small>
 							<span class="pull-right">
 								<a href="#" data-toggle="tooltip" data-placement="left" title="Comments">	<i class="fa fa-eye" ></i>{{ $post->view }}</a>
-								<a href="#" data-toggle="tooltip" data-placement="right" title="Loved"><i class="fa fa-heart"></i> {{ $post->vote }} </a>                  
+								<a href="#" data-toggle="tooltip" data-placement="right" title="Loved"><i class="fa fa-comments"></i> {{count($post->comments) }} </a>                  
 							</span>
 						</div>
 						<div class="content-footer">

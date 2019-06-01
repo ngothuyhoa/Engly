@@ -39,10 +39,10 @@
                 	<div class="media-body">
     					<span class="stats-item text-muted" data-tippy="" data-original-title="Posts: 32">
     						<i aria-hidden="true" class="stats-item__icon fa fa-pencil"></i>
-        					32
+        					{{ count($userSidebar->posts) }}
     					</span>
     					<span class="stats-item text-muted" data-tippy="" data-original-title="Followers: 337"><i aria-hidden="true" class="stats-item__icon fa fa-user-plus"></i>
-        					337
+        					{{ count($userSidebar->followers) }}
     					</span>
     				</div>
     			</div>

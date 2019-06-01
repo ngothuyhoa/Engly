@@ -9,9 +9,11 @@ use App\Contracts\Repositories\TagRepository;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Event;
 use Illuminate\Http\UploadedFile;
-
+use Illuminate\Support\Collection;
 use App\Tag;
 use App\Post;
+use App\Follow;
+use App\User;
 
 class PostController extends Controller
 {
@@ -106,11 +108,10 @@ class PostController extends Controller
                 ['url' => '/post_image' . '/' . $name]
             );
         }
-
         $post->tags()->sync($idTags);
         
 
-        return redirect()->route('post_detail', ['slug' => $data['slug']]);
+        return redirect()->route('post_detail', ['slug' => $data['slug']])->with("success","Create post successfully !");;
     }
 
     /**
@@ -138,9 +139,17 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($slug)
     {
-        //
+        $post = $this->postRepository->findBySlug($slug);
+        $tags = ($post->tags);
+        $arrTags = [];
+        foreach ($tags as $tag) {
+          // $arrTag.push($tag->name);
+           array_push($arrTags, $tag->name);
+        }
+        $arrTags = (implode(',',$arrTags));
+        return view('page_user.post.update', compact('post', 'arrTags'));
     }
 
     /**
@@ -150,9 +159,53 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $slug)
     {
-        //
+        $post = $this->postRepository->findBySlug($slug);
+        $idTags= [];
+        $nameTags = explode(',', $request->tag);
+        foreach ($nameTags as $nameTag) {
+            $tag = Tag::where('name', '=', $nameTag)->first(); 
+            if ($tag === null) {
+                $tag = $this->tagRepository->store([
+                    'name' => $nameTag,
+                    'slug' => str_slug($nameTag)
+                ]);
+            }   
+            array_push($idTags, $tag->id);
+        }
+        
+        $data = [
+            'user_id' => $post->user_id,
+            'title' => $request->title,
+            'content' => $request->content,
+            'slug' => str_slug($request->title),
+            'status' => $request->status
+        ];
+
+        $this->postRepository->update($post->id, $data);
+
+        if ($request->hasFile('image')) {       
+            $Image = $request->file('image');       
+            $ImageDesPath = public_path('/post_image');
+                       
+            if(($post->images)->count()){
+                foreach ($post->images as $image) {
+                    $Image->move($ImageDesPath, substr($image->url,12));
+                }
+            }else {
+                $name = time(). '.' .$Image->getClientOriginalExtension();
+                $Image->move($ImageDesPath, $name);
+                $image = $this->postRepository->createImage(
+                $post->id,
+                ['url' => '/post_image' . '/' . $name]
+                );
+            }
+
+        }
+        $post->tags()->sync($idTags);
+
+        return redirect()->route('post_detail', ['slug' => $data['slug']])->with("success","Update post successfully !");;
     }
 
     /**
@@ -163,7 +216,9 @@ class PostController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $this->postRepository->delete($id);
+        
+        return redirect()->route('user_detail', ['username' => Auth::user()->username]);
     }
 
     public function findByTag(Request $request, $slug)
@@ -203,11 +258,42 @@ class PostController extends Controller
         return redirect()->route('post_detail', ['slug' => $post->slug]);
     }
 
-    public function public(Request $request, $id) {
+    public function postPublic(Request $request, $id) {
         $status = $this->postRepository->update($id,[
             'status' => '1'
         ]);
         $post = $this->postRepository->findOrFail($id);
         return redirect()->route('post_detail', ['slug' => $post->slug]);
     }
+
+    public function follow(Request $request) {
+        $title = config('blog.list_post');
+        $id = Auth::user()->id;
+        $users = User::with('posts')->find($id)->follows;
+
+        //Lay ra user dang theo doi
+        $users = Follow::with(['user.posts'])->where('user_id', $id)->get();
+        //tao mang id user dang theo doi
+        $userId=[];
+        foreach ($users as $user) {
+            array_push($userId, $user->follows_id);
+        }
+
+        //Lay ra post voi mang user_id
+        $posts = Post::with(['user', 'images'])->where(function($q) use ($userId){
+            $q->whereIn('user_id', $userId);
+        })->orderBy('id', 'DESC')->paginate();
+        if ($request->ajax()) {
+            return view(
+                'page_user.post.post_paginate', compact('posts', 'title')
+            );
+        }
+
+        return View('page_user.post.index', compact('posts', 'title'));
+    }
+
+    
+
+
+    
 }

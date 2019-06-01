@@ -11,3 +11,17 @@ function convertString($string){
     $string = str_replace(' ', '', $string);
 	return $string;
 }
+
+/*function checked($value, $status){
+	if($value === $status) {
+		return "checked = checked";
+	}
+	return false;
+}*/
+
+function checked($value, $v_compare){
+    $rs='';
+    if($value==$v_compare)
+        $rs ='checked="checked"';
+    return $rs;
+}

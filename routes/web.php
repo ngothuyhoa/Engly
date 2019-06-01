@@ -19,6 +19,10 @@ Route::get('/', 'User\HomeController@index')->name('home');
 //User
 Route::get('user', 'User\UserController@index')->name('user');
 Route::get('user/{username}', 'User\UserController@show')->name('user_detail');
+Route::get('profile/{username}', 'User\UserController@profile')->name('user_profile');
+Route::post('update_profile/{username}', 'User\UserController@updateProfile')->name('update_profile');
+Route::get('/change_password','User\UserController@showChangePasswordForm');
+Route::post('/change_password','User\UserController@changePassword')->name('change_password');
 
 /*Route::get('/pusher','User\UserController@getPusher');
 Route::get('/fire-event', function(){
@@ -31,6 +35,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('users/{user}/follow', 'User\UserController@follow')->name('follow');
     Route::Post('users/{user}/unfollow', 'User\UserController@unfollow')->name('unfollow');
     Route::get('/notifications', 'User\UserController@notifications');
+
 });
 
 Auth::routes();
@@ -42,22 +47,26 @@ Route::get('/find_tag/{slug}', 'User\PostController@findByTag')->name('find_tag'
 Route::get('/create_post', 'User\PostController@create')->name('post_create');
 Route::post('/store_post', 'User\PostController@store')->name('post_store');
 Route::post('/draft_post/{id}', 'User\PostController@draft')->name('post_draft');
-Route::post('/public_post/{id}', 'User\PostController@public')->name('post_public');
+Route::post('/public_post/{id}', 'User\PostController@postPublic')->name('post_public');
+Route::get('/post_follow', 'User\PostController@follow')->name('post_follow');
+Route::post('/destroy_post/{id}', 'User\PostController@destroy')->name('post_destroy');
+Route::get('/post_edit/{slug}', 'User\PostController@edit')->name('post_edit');
+Route::post('/post_update/{slug}', 'User\PostController@update')->name('post_update');
 
 Route::get('/view', 'User\PostController@view')->name('view')->middleware('filter');
 
 //User
 
-/*Route::get('admin', function(){
-	return view('admin.dashboard.index');
-});*/
+Route::get('test', function(){
+	return view('test');
+});
 
 //Comment
 Route::post('/comment/store', 'User\CommentController@store')->name('comment_store');
 Route::post('/reply/store', 'User\CommentController@replyStore')->name('reply_store');
 
 //Search
-Route::get('search/query', 'User\SearchController@query')->name('search');
+Route::get('search/query', 'User\SearchController@search')->name('search');
 
 //Pusher
 

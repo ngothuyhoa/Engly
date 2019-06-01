@@ -27,18 +27,15 @@ class AppServiceProvider extends ServiceProvider
         view()->composer([
             'page_user.layout.sidebar',
         ], function ($view) {
-            $tagSidebars = \Cache::remember('tags_sidebar', 60, function () {
-                return Tag::orderBy('id', 'DESC')->paginate(6);
-            });
-
-            $userSidebars = \Cache::remember('user_sidebar', 60, function () {
-                return User::With('images')->paginate(3);
-            });
+            $tagSidebars = Tag::inRandomOrder()->paginate(6);
+            $userSidebars = User::With(['images', 'posts', 'followers'])->inRandomOrder()->paginate(3);
             
             $view->with(['tagSidebars' => $tagSidebars, 'userSidebars' => $userSidebars]);
         });
 
         Post::observe(PostObserver::class);
+
+        
     }
 
     /**

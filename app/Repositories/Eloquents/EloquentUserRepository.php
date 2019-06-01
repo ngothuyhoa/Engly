@@ -32,4 +32,14 @@ class EloquentUserRepository extends EloquentBaseRepository implements UserRepos
         return $this->model->where('is_super_admin', '1')->orderBy('id', 'DESC')->get();
     }
 
+    public function createImage($id, $data = [])
+    {
+        return $this->model->find($id)->images()->create($data);
+    }
+
+    public function UpdateImage($id, $data = [])
+    {
+        return $this->model->find($id)->images()->update($data);
+    }
+
 }

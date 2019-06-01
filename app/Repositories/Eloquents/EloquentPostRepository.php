@@ -43,5 +43,18 @@ class EloquentPostRepository extends EloquentBaseRepository implements PostRepos
         return $this->model->find($id)->images()->create($data);
     }
 
+    public function UpdateImage($id, $data = [])
+    {
+        return $this->model->find($id)->images()->update($data);
+    }
+
+
+    public function search($search) {
+        return $this->model->with(['user', 'images'])->orwhere('title', 'LIKE', "%{$search}%")
+        ->orWhere('content', 'LIKE', "%{$search}%")
+        ->orwhereHas('user', function ($query) use ($search){
+            $query->where('username', 'like', '%'.$search.'%');
+        })->paginate();
+    }
     
 }

@@ -11,16 +11,17 @@
 
 	<!-- Google Font -->
 	
-
+	<link rel="stylesheet" href="{{ asset('/css/all.css') }}">
+	<link rel="stylesheet" href="{{ asset('/css/blog.css') }}">
 
 	<!-- Stylesheets -->
-	<link rel="stylesheet" href="/assets/css/bootstrap.min.css"/>
+	<!-- <link rel="stylesheet" href="/assets/css/bootstrap.min.css"/>
 	<link rel="stylesheet" href="/assets/css/font-awesome.min.css"/>
 	<link rel="stylesheet" href="/assets/css/flaticon.css"/>
 	<link rel="stylesheet" href="/assets/css/owl.carousel.min.css"/>
 	<link rel="stylesheet" href="/assets/css/animate.css"/>
 	<link rel="stylesheet" href="/assets/css/style.css"/>
-	<link rel="stylesheet" href="/assets/css/blog.css"/>
+	<link rel="stylesheet" href="/assets/css/blog.css"/> -->
 
 
 	<!--[if lt IE 9]>
@@ -59,13 +60,14 @@
 
 	<!--====== Javascripts & Jquery ======-->
 	<script src="{{ asset('js/app.js') }}" type=text/javascript></script>
+	<script src="{{ asset('js/all.js') }}" type=text/javascript></script>
 	<!-- <script src="/assets/js/jquery.min.js"></script> -->
 	<!-- <script src="/assets/js/popper.min.js"></script> -->
 	<!-- <script src="/assets/js/bootstrap.min.js"></script> -->
-	<script src="/assets/js/owl.carousel.min.js"></script>
+	<!-- <script src="/assets/js/owl.carousel.min.js"></script>
 	<script src="/assets/js/circle-progress.min.js"></script>
 	<script src="/assets/js/main.js"></script>
-	<script src="/assets/js/paginate.js"></script>
+	<script src="/assets/js/paginate.js"></script> -->
 	
 	</body>
 </html>

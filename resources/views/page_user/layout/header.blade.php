@@ -1,5 +1,5 @@
 <header class="header-section"style="background: #0d0d29">
-	<a href="{{ route('home') }}" class="site-logo"><img src="assets/img/logo.png" alt=""></a>
+	<a href="{{ route('home') }}" class="site-logo"><img src="/assets/img/logo.png" alt=""></a>
 	<div class="nav-switch">
 		<i class="fa fa-bars"></i>
 	</div>
@@ -27,11 +27,11 @@
 		</div>
 		@endif -->
 		
-		<ul class="main-menu" style="padding-right: 50px">
+		<ul class="main-menu">
 			<li><a href="{{ route('home') }}">Home</a></li>
 			<li><a href="{{ route('post') }}">Post</a></li>
 			@if(Auth::check())
-			<li><a href="{{ route('user') }}">User</a></li>
+			<li><a href="{{ route('post_follow') }}">Following</a></li>
 			@endif
 			<li><a href="./contact.html">Contact</a></li>
 			@if(Auth::user())
@@ -47,7 +47,7 @@
 	                  	</form>
                   	</li>
 	                <li><a href="{{ route('user_detail', Auth::user()->username) }}">My Post</a></li>
-                  	<li><a href="#">My Profile</a></li>
+                  	<li><a href="{{ route('user_profile', Auth::user()->username) }}">My Profile</a></li>
                   	<li><a href="{{ route('post_create') }}">Write Post</a></li>
 	            </ul>
         	</li>

@@ -60,7 +60,7 @@
 					    </div>
 					   
 				        
-					    <button type="submit" class="btn btn-info">Info</button>
+					    <button type="submit" class="btn btn-info">Create</button>
 					    </div>
 					</form>
 
@@ -68,6 +68,7 @@
 			</div>
 		</div>
 		<script src="{{ asset('js/app.js') }}" type=text/javascript></script>
+		<script src="{{ asset('js/all.js') }}" type=text/javascript></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.9/summernote.js"></script>    
 		<!-- Tag Input -->
 		<script src="/assets/js/bootstrap-tagsinput.js"></script>

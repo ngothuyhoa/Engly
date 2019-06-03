@@ -33,17 +33,17 @@
 			@if(Auth::check())
 			<li><a href="{{ route('post_follow') }}">Following</a></li>
 			@endif
-			<li><a href="./contact.html">Contact</a></li>
+			<li><a href="{{ route('feedback_create') }}">Contact</a></li>
 			@if(Auth::user())
 			<li class="dropdown" style="color: #ff5050">
 	            <a class="dropdown-toggle" id="userProfile" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
 	                <span class="fa fa-user"> {{ Auth::user()->fullname }}</span>
 	            </a>
-	            <ul class="dropdown-menu" aria-labelledby="userProfileMenu" id="userProfileMenu" style="background: pink">
+	            <ul class="dropdown-menu" aria-labelledby="userProfileMenu" id="userProfileMenu">
 	            	<li>
 	                  	<form method="post" action="{{ route('logout') }}">
 	                  		{{ csrf_field() }}
-	                  		<button id="logout">Logout</button>
+	                  		<button class="btn btn-outline-primary" id="logout">Logout</button>
 	                  	</form>
                   	</li>
 	                <li><a href="{{ route('user_detail', Auth::user()->username) }}">My Post</a></li>

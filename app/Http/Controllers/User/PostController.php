@@ -109,9 +109,12 @@ class PostController extends Controller
             );
         }
         $post->tags()->sync($idTags);
-        
+        $notification = array(
+            'message' => 'Thêm bài viết thành công!',
+            'alert-type' => 'success'
+        );
 
-        return redirect()->route('post_detail', ['slug' => $data['slug']])->with("success","Create post successfully !");;
+        return redirect()->route('post_detail', ['slug' => $data['slug']])->with($notification);
     }
 
     /**
@@ -205,7 +208,12 @@ class PostController extends Controller
         }
         $post->tags()->sync($idTags);
 
-        return redirect()->route('post_detail', ['slug' => $data['slug']])->with("success","Update post successfully !");;
+        $notification = array(
+            'message' => 'Sửa bài viết thành công!',
+            'alert-type' => 'success'
+        );
+
+        return redirect()->route('post_detail', ['slug' => $data['slug']])->with($notification);
     }
 
     /**

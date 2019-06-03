@@ -8,7 +8,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<!-- Favicon -->
 	<link href="img/favicon.ico" rel="shortcut icon"/>
-
+	<link href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" rel="stylesheet">
 	<!-- Google Font -->
 	
 	<link rel="stylesheet" href="{{ asset('/css/all.css') }}">
@@ -68,6 +68,28 @@
 	<script src="/assets/js/circle-progress.min.js"></script>
 	<script src="/assets/js/main.js"></script>
 	<script src="/assets/js/paginate.js"></script> -->
+	<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+
+	<script>
+    @if(Session::has('message'))
+        var type="{{Session::get('alert-type','info')}}"
+
+        switch(type){
+            case 'info':
+                 toastr.info("{{ Session::get('message') }}");
+                 break;
+            case 'success':
+                toastr.success("{{ Session::get('message') }}");
+                break;
+            case 'warning':
+                toastr.warning("{{ Session::get('message') }}");
+                break;
+            case 'error':
+                toastr.error("{{ Session::get('message') }}");
+                break;
+        }
+    @endif
+</script>
 	
 	</body>
 </html>

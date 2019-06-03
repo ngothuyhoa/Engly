@@ -382,3 +382,24 @@ button.accordion.active:after {
 .dropdown-toggle::after {
     display:none;
 }
+#logout {
+    border: 0px;
+    margin-left: 25%;    
+}
+#userProfileMenu button {
+    color: #006666;
+}
+#userProfileMenu button:hover {
+    background: white;
+    color: #ff9900;
+}
+
+#userProfileMenu li {
+    margin-left: 0px;
+}
+#userProfileMenu li a {
+    color: #006666;
+}
+#userProfileMenu li a:hover {
+    color: #ff9900;
+}

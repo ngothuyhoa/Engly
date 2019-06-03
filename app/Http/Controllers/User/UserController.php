@@ -187,14 +187,14 @@ class UserController extends Controller
             }else {
                 $name = time(). '.' .$Image->getClientOriginalExtension();
                 $Image->move($ImageDesPath, $name);
-                $image = $this->postRepository->createImage(
+                $image = $this->userRepository->createImage(
                 $user->id,
                 ['url' => '/user_image' . '/' . $name]
                 );
             }
         }
 
-        return redirect()->route('user_profile', ['username' => $username]);   
+        return redirect()->route('user_profile', ['username' => $username])->with("success","Cập nhật thành công!");   
     }
 
     public function showChangePasswordForm(){

@@ -60,8 +60,8 @@
 	            </aside>
 	        </div>
 	        @endforeach
-	        <div class="col-md-3 offset-md-10" class="view-all" style="margin-top: 10px"> 
-	        	<a style="border: 0px; border-radius: 15px" href="{{ route('post') }}" type="button" class="btn btn-primary">Xem Them</a>
+	        <div class="col-md-3 offset-md-10" style="margin-top: 10px"> 
+	        	<a style="border: 0px; border-radius: 15px" href="{{ route('post') }}" class="btn btn-primary">Xem Them</a>
 	        </div>
 		</div>
 
@@ -107,9 +107,10 @@
 	            </aside>
 	        </div>
         @endforeach
-        <div class="col-md-3 offset-md-10" class="view-all"> 
-	        	<a href="{{ route('post_featured') }}" type="button" class="btn btn-primary">Xem Them</a>
+        <div class="col-md-3 offset-md-10" style="margin-top: 10px"> 
+	        	<a style="border-radius: 15px" href="{{ route('post_featured') }}" class="btn btn-primary">Xem Them</a>
 	        </div>
 		</div>
 	</div>
 @endsection
+

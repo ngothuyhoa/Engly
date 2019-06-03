@@ -115,7 +115,7 @@ input[type=button]:active, input[type=submit]:active, input[type=reset]:active  
   transform: scale(0.95);
 }
 
-input[type=text] {
+/*input[type=text] {
   background-color: #f6f6f6;
   border: none;
   color: #0d0d0d;
@@ -174,8 +174,7 @@ input[type=password]:focus {
 input[type=password]:placeholder {
   color: #cccccc;
 }
-
-
+*/
 
 /* ANIMATIONS */
 
@@ -291,4 +290,9 @@ input[type=password]:placeholder {
 
 #icon {
   width:60%;
+}
+
+.custom {
+    margin-top: 0px;
+    margin-bottom: 0px;
 }

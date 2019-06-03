@@ -68,6 +68,10 @@ Route::post('/reply/store', 'User\CommentController@replyStore')->name('reply_st
 //Search
 Route::get('search/query', 'User\SearchController@search')->name('search');
 
+//Feedback
+Route::get('feedback', 'User\FeedbackController@create')->name('feedback_create');
+Route::post('feedback/{user_id}', 'User\FeedbackController@store')->name('feedback_store');
+
 //Pusher
 
 Route::get('/notification', function () {

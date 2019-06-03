@@ -5315,11 +5315,6 @@ ol {
     color: orange;
     font-size: 14px;
 }
-#logout {
-    background: white;
-    border: 0px;
-    
-}
 #form-post{
 	margin-top: 10px;
 	padding-bottom: 20px;
@@ -5335,7 +5330,6 @@ ol {
     box-shadow: 1px 4px 10px 3px rgba(199,197,199,1);
     
 }
-
 .popover {
 	position: none;
 }

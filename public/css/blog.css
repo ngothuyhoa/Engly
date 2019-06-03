@@ -382,55 +382,24 @@ button.accordion.active:after {
 .dropdown-toggle::after {
     display:none;
 }
-$bgColor: #242424
-$trimColor: #dd4040
-$textColor: #fff 
+#logout {
+    border: 0px;
+    margin-left: 25%;    
+}
+#userProfileMenu button {
+    color: #006666;
+}
+#userProfileMenu button:hover {
+    background: white;
+    color: #ff9900;
+}
 
-
-.filupp > input[type="file"]
-    position: absolute
-    width: 1px
-    height: 1px
-    padding: 0
-    margin: -1px
-    overflow: hidden
-    clip: rect(0,0,0,0)
-    border: 0
-
-.filupp 
-    position: relative
-    background: $bgColor
-    display: block
-    padding: 1em
-    font-size: 1em
-    width: 100%
-    height: 3.5em
-    color: $textColor
-    cursor: pointer
-    box-shadow: 0 1px 3px darken($bgColor,10)
-
-.filupp:before
-    content: ""
-    position: absolute
-    top: 1.5em
-    right: .75em
-    width: 2em
-    height: 1.25em
-    border: 3px solid $trimColor
-    border-top: 0
-    text-align: center
-    
-
-.filupp:after
-    content: "\279c"
-    +transform(rotate(-90deg))
-    position: absolute
-    top: .65em 
-    right: .45em
-    font-size: 2em
-    color: $trimColor
-    line-height: 0
-
-.filupp-file-name
-    width: 75%
-    +ellipsis(100%)
+#userProfileMenu li {
+    margin-left: 0px;
+}
+#userProfileMenu li a {
+    color: #006666;
+}
+#userProfileMenu li a:hover {
+    color: #ff9900;
+}

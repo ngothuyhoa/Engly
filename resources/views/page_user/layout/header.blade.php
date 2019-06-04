@@ -35,20 +35,23 @@
 			@endif
 			<li><a href="{{ route('feedback_create') }}">Contact</a></li>
 			@if(Auth::user())
-			<li class="dropdown" style="color: #ff5050">
+			<li class="dropdown" id="user-header">
 	            <a class="dropdown-toggle" id="userProfile" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
 	                <span class="fa fa-user"> {{ Auth::user()->fullname }}</span>
 	            </a>
-	            <ul class="dropdown-menu" aria-labelledby="userProfileMenu" id="userProfileMenu">
+	            <ul class="dropdown-menu" aria-labelledby="userProfileMenu" id="userProfileMenu" style="width: 200px">
 	            	<li>
 	                  	<form method="post" action="{{ route('logout') }}">
 	                  		{{ csrf_field() }}
-	                  		<button class="btn btn-outline-primary" id="logout">Logout</button>
+	                  		<button class="btn btn-outline-primary" id="logout"><span class="fa fa-power-off"></span> Logout</button>
 	                  	</form>
                   	</li>
-	                <li><a href="{{ route('user_detail', Auth::user()->username) }}">My Post</a></li>
-                  	<li><a href="{{ route('user_profile', Auth::user()->username) }}">My Profile</a></li>
-                  	<li><a href="{{ route('post_create') }}">Write Post</a></li>
+                  	<hr>
+	                <li><a href="{{ route('user_detail', Auth::user()->username) }}"><span class="fa fa-th-list"> </span> My Post</a></li>
+	                <hr>
+                  	<li><a href="{{ route('user_profile', Auth::user()->username) }}"><span class="fa fa-user"> </span> My Profile</a></li>
+                  	<hr>
+                  	<li><a href="{{ route('post_create') }}"><span class="fa fa-pencil"> </span> Write Post</a></li>
 	            </ul>
         	</li>
         	@else

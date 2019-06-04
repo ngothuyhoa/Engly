@@ -5,15 +5,17 @@
 		
 		<!-- include libraries(jQuery, bootstrap) -->
 		<link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.css" rel="stylesheet">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 		<!-- include summernote css/js-->
 		<link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.9/summernote.css" rel="stylesheet">
 		<!-- Tag input -->
 		<link rel="stylesheet" href="/assets/css/bootstrap-tagsinput.css">
-		<link rel="stylesheet" href="/assets/css/style.css">	
+		<link rel="stylesheet" href="/assets/css/style.css">
+
 	</head>
 	<body>
 		@include('page_user.layout.header')
-		<h3 class="text-center" style="margin-top: 70px">Create new Post</h3>
+		<h3 class="text-center" style="margin-top: 90px">Create new Post</h3>
 		<div class="container">
 			<div class="row">
 				<!-- left column -->
@@ -25,7 +27,7 @@
 				        	<div class="col-md-1" style=" padding-top: 5px; font-weight: bold;">
 				        		Title:
 				        	</div>
-				        	<div class="col-md-5">
+				        	<div class="col-md-6">
 				        		<input type="text" name="title" class="form-control" placeholder="Enter Title">
 				        	</div>
 							
@@ -36,7 +38,7 @@
 				        		Tag:
 				        	</div>
 				        	<div class="col-md-4">
-				        		<input style="margin-top: 10px;width: 600px" class="typeahead" type="text" data-role="tagsinput" name="tag" placeholder="Enter Tag"/>
+				        		<input class="typeahead" type="text" data-role="tagsinput" name="tag" placeholder="Enter Tag"/>
 				        	</div>    
 						    
 						</div>
@@ -75,7 +77,9 @@
 		<script src="/assets/js/typeahead.bundle.js"></script>
 		<script>
 		        $(document).ready(function() {
-		            $('.summernote').summernote();
+		            $('.summernote').summernote({
+		            	height: 220
+		            });
 		        });
 		</script>
 		

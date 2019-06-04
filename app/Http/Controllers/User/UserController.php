@@ -72,7 +72,11 @@ class UserController extends Controller
             $user = $this->userRepository->findByUserName($username);
             $posts = $auth->posts()->orderBy('id', 'DESC')->paginate();
             $postPublic = $auth->posts()->orderBy('id', 'DESC')->where('status', 1)->paginate();
+            //dd($postPublic);
             $postDraft = $auth->posts()->orderBy('id', 'DESC')->where('status', 0)->paginate();
+            $follows = $auth->follows()->with('images')->get();
+            $followers = $auth->followers()->with('images')->get();
+            //dd($follower);
            
         } else {
             $user = $this->userRepository->findByUserName($username);
@@ -80,11 +84,11 @@ class UserController extends Controller
         }
         if ($request->ajax()) {
                 return view(
-                    'page_user.post.post_paginate', compact('posts', 'title', 'auth', 'postPublic', 'postDraft')
+                    'page_user.post.post_paginate', compact('posts', 'title', 'auth', 'postPublic', 'postDraft', 'follows', 'followers')
                 );
             }
         
-        return view('page_user.user.index', compact(['user', 'posts', 'title', 'auth', 'postPublic', 'postDraft']));
+        return view('page_user.user.index', compact(['user', 'posts', 'title', 'auth', 'postPublic', 'postDraft', 'follows', 'followers']));
     }
 
     /**

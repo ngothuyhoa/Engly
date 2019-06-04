@@ -225,8 +225,12 @@ class PostController extends Controller
     public function destroy($id)
     {
         $this->postRepository->delete($id);
+        $notification = array(
+            'message' => 'Xóa bài viết thành công!',
+            'alert-type' => 'success'
+        );
         
-        return redirect()->route('user_detail', ['username' => Auth::user()->username]);
+        return redirect()->route('user_detail', ['username' => Auth::user()->username])->with($notification);
     }
 
     public function findByTag(Request $request, $slug)

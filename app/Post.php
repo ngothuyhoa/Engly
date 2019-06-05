@@ -3,12 +3,12 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-use Laravel\Scout\Searchable;
+//use Laravel\Scout\Searchable;
 
 
 class Post extends Model
 {
-    use Searchable;
+    //use Searchable;
 	protected $table = 'posts';
     protected $fillable = [
         'user_id', 'title', 'content', 'view', 'vote', 'status', 'slug'

@@ -91,7 +91,12 @@ class FeedbackController extends Controller
     public function destroy($id)
     {
         $this->feedbackRepository->delete($id);
+
+        $notification = array(
+            'message' => 'Xóa thành công phản hồi!',
+            'alert-type' => 'success'
+        );
         
-        return redirect('admin/feedback');
+        return redirect('admin/feedback')->with($notification);
     }
 }

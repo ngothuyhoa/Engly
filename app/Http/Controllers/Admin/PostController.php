@@ -97,6 +97,12 @@ class PostController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $this->postRepository->delete($id);
+        $notification = array(
+            'message' => 'Xóa bài viết thành công!',
+            'alert-type' => 'success'
+        );
+        
+        return redirect('admin/post')->with($notification);
     }
 }

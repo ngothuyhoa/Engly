@@ -64,12 +64,15 @@
 								</td>
 								<td>{{ $post->updated_at }}</td>
 								<td class="text-center">
-									<a href="" class="btn btn-warning m-btn m-btn--icon m-btn--icon-only">
-                            		<i class="fa fa-edit"></i>
-                        			</a>
-                        			<a href="" class="btn btn-danger m-btn m-btn--icon m-btn--icon-only">
-                            		<i class="fa fa-trash"></i>
-                        			</a>
+                        			<form method="post" action="{{ route('destroy_post', $post->id) }}">
+                        				@csrf
+                        				<a href="" class="btn btn-warning m-btn m-btn--icon m-btn--icon-only">
+	                            		<i class="fa fa-edit"></i>
+	                        			</a>
+	                        			<button  type="submit" class="btn btn-danger">
+	                            		<i class="fa fa-trash"></i>
+	                        			</button>
+                        			</form>
 								</td>
 							</tr>
 							@endforeach

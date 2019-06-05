@@ -30,12 +30,6 @@
                         </p>        
                     </div>
                     <div class="row" id="share">
-                        <div class="col-md-3 col-sm-3">
-                            <div class="social">
-                                <a class="facebook" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u={{ url()->current() }}"><i class="fa fa-facebook-f"></i></a>
-                                <a class="ggplus" target="_blank" href="https://plus.google.com/share?url={{ url()->current() }}"> <i class="fa fa-google-plus"></i></a>
-                            </div> 
-                        </div>
                         @if(Auth::check() && Auth::user()->username == $post->user->username)
                         <div class="col-md-1 col-sm-1" >
                             <div class="dropdown" id="edit">
@@ -71,6 +65,15 @@
                             <i class="fa fa-lock"></i>  
                         </div>
                         @endif
+                        
+                        <div class="col-md-3 col-sm-3 offset-md-7">
+                            <div class="social">
+                                <a class="facebook" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u={{ url()->current() }}"><i class="fa fa-facebook-f"></i></a>
+                                <a class="ggplus" target="_blank" href="https://plus.google.com/share?url={{ url()->current() }}"> <i class="fa fa-google-plus"></i></a>
+                                
+                               <a style="background: white; color: black;" href="{{ route('report_create', $post->id) }}"  class="btn btn-light"> <i style="font-size: 25px" class="fa fa-flag"></i></a> 
+                            </div> 
+                        </div>
                     </div>                      
                 </div>
             </div>

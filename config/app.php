@@ -176,7 +176,7 @@ return [
         App\Providers\RouteServiceProvider::class,
         App\Providers\RepositoryServiceProvider::class,
         Laravel\Socialite\SocialiteServiceProvider::class,
-        Laravel\Scout\ScoutServiceProvider::class,
+        //Laravel\Scout\ScoutServiceProvider::class,
 
     ],
 

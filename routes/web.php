@@ -72,6 +72,11 @@ Route::get('search/query', 'User\SearchController@search')->name('search');
 Route::get('feedback', 'User\FeedbackController@create')->name('feedback_create');
 Route::post('feedback/{user_id}', 'User\FeedbackController@store')->name('feedback_store');
 
+
+//Report
+Route::get('report/{id}', 'User\ReportController@create')->name('report_create');
+Route::post('report/{id}', 'User\ReportController@store')->name('report_store');
+
 //Pusher
 
 Route::get('/notification', function () {
@@ -94,9 +99,12 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware'=> 'admin
     Route::get('post', 'PostController@index')->name('index_post');
     Route::get('post/create', 'PostController@create')->name('create_post');
     Route::post('post/store', 'PostController@store')->name('store_post');
+    Route::post('destroy/{id}', 'PostController@destroy')->name('destroy_post');
+
 
     //User
     Route::get('user', 'UserController@index')->name('index_user');
+    Route::post('destroy/{id}', 'UserController@destroy')->name('destroy_user');
 
     //Feedback
     Route::get('feedback', 'FeedbackController@index')->name('index_feedback');

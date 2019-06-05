@@ -43,12 +43,15 @@
 								<td>{{ $user->username }}</td>
 								<td>{{ $user->email }}</td>
 								<td>
-									<a href="" class="btn btn-warning m-btn m-btn--icon m-btn--icon-only">
-                            		<i class="fa fa-edit"></i>
-                        			</a>
-                        			<a href="" class="btn btn-danger m-btn m-btn--icon m-btn--icon-only">
-                            		<i class="fa fa-trash"></i>
-                        			</a>
+									<form method="post" action="{{ route('destroy_user', $user->id) }}">
+                        				@csrf
+                        				<a href="" class="btn btn-warning m-btn m-btn--icon m-btn--icon-only">
+	                            		<i class="fa fa-edit"></i>
+	                        			</a>
+	                        			<button  type="submit" class="btn btn-danger">
+	                            		<i class="fa fa-trash"></i>
+	                        			</button>
+                        			</form>
 								</td>
 							</tr>
 							@endforeach

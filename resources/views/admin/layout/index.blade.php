@@ -23,6 +23,7 @@
   	<link rel="stylesheet" href="/assets/admin/css/all.css">
 	<!-- Google Font: Source Sans Pro -->
 	<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+	<link href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" rel="stylesheet">
 	<!-- Tag input -->
 	<link rel="stylesheet" href="/assets/admin/css/bootstrap-tagsinput.css">
 </head>
@@ -348,6 +349,28 @@
 	<script src="/assets/admin/js/bootstrap3-wysihtml5.all.min.js"></script>
 	<!-- Tag Input -->
 	<script src="/assets/admin/js/bootstrap-tagsinput.min.js"></script>
+	<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+
+	<script>
+    @if(Session::has('message'))
+        var type="{{Session::get('alert-type','info')}}"
+
+        switch(type){
+            case 'info':
+                 toastr.info("{{ Session::get('message') }}");
+                 break;
+            case 'success':
+                toastr.success("{{ Session::get('message') }}");
+                break;
+            case 'warning':
+                toastr.warning("{{ Session::get('message') }}");
+                break;
+            case 'error':
+                toastr.error("{{ Session::get('message') }}");
+                break;
+        }
+    @endif
+</script>
 	<!-- page script -->
 	<script>
 		$(function () {

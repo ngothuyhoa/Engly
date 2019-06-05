@@ -90,6 +90,13 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $user = $this->userRepository->findOrFail($id);
+        $this->userRepository->delete($id);
+        $notification = array(
+            'message' => 'Xóa thành công user: '.$user->fullname,
+            'alert-type' => 'success'
+        );
+        
+        return redirect('admin/user')->with($notification);
     }
 }

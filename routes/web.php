@@ -99,7 +99,7 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware'=> 'admin
     Route::get('post', 'PostController@index')->name('index_post');
     Route::get('post/create', 'PostController@create')->name('create_post');
     Route::post('post/store', 'PostController@store')->name('store_post');
-    Route::post('destroy/{id}', 'PostController@destroy')->name('destroy_post');
+    Route::post('post/destroy/{id}', 'PostController@destroy')->name('destroy_post');
 
 
     //User
@@ -115,7 +115,8 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware'=> 'admin
 
     //Report
 	Route::get('report', 'ReportController@index')->name('index_report');
-    Route::get('report/destroy/{id}', 'ReportController@destroy')->name('destroy_report');
+    Route::post('report/destroy/{id}', 'ReportController@destroy')->name('destroy_report');
+    Route::post('report/update/{id}', 'ReportController@update')->name('report_update');
 
     //following	
   	Route::get('following', 'FollowingController@index')->name('index_following');

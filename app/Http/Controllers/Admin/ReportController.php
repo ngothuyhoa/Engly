@@ -89,7 +89,16 @@ class ReportController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->reportRepository->update($id,[
+            'status' => 1
+        ]);
+
+        $notification = array(
+            'message' => 'Cập nhật report thành công!',
+            'alert-type' => 'success'
+        );
+
+        return redirect('admin/report')->with($notification);
     }
 
     /**
@@ -101,7 +110,11 @@ class ReportController extends Controller
     public function destroy($id)
     {
         $this->reportRepository->delete($id);
+        $notification = array(
+            'message' => 'Xóa report thành công!',
+            'alert-type' => 'success'
+        );
         
-        return redirect('admin/report');
+        return redirect('admin/report')->with($notification);
     }
 }

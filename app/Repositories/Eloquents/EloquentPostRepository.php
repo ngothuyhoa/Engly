@@ -24,7 +24,7 @@ class EloquentPostRepository extends EloquentBaseRepository implements PostRepos
 
     public function findBySlug($slug) {
 
-        return $this->model->with(['images', 'user', 'tags', 'comments'])->where('slug', $slug)->orderBy('id', 'DESC')->first();
+        return $this->model->with(['images', 'user.roles', 'tags', 'comments'])->where('slug', $slug)->orderBy('id', 'DESC')->first();
     }
 
 

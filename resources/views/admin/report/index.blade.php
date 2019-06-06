@@ -34,6 +34,7 @@
 								<th>Name</th>
 								<th>Post</th>
 								<th>Note</th>
+								<th>Status</th>
 								<th>Tuy chinh</th>
 							</tr>
 						</thead>
@@ -42,15 +43,28 @@
 							<tr>
 								<td>{{ $report->user->id }}</td>
 								<td>{{ $report->user->fullname }}</td>
-								<td>{{ $report->post->title }}</td>
+								<td><a href="{{ route('post_detail', $report->post->slug) }}">{{ $report->post->title }}</a></td>
 								<td>{{ $report->note}}</td>
 								<td>
-									<a href="" class="btn btn-warning m-btn m-btn--icon m-btn--icon-only">
-                            		<i class="fa fa-edit"></i>
-                        			</a>
-                        			<a href="{{ route('destroy_report', $report->id) }}" class="btn btn-danger m-btn m-btn--icon m-btn--icon-only">
-                            		<i class="fa fa-trash"></i>
-                        			</a>
+									@if($report->status == 0)
+									<form action="{{ route('report_update', $report->id) }}" method="post">
+										@csrf
+										<button type="submit" class="btn btn-warning">Chưa duyệt</button>
+	                        			</a>
+									</form>
+									@else
+										<form action="{{ route('report_update', $report->id) }}" method="post">
+										@csrf
+										<button type="submit" class="btn btn-success">Đã duyệt</button>
+	                        			</a>
+									</form>
+									@endif
+								</td>
+								<td>
+									<form method="post" action="{{ route('destroy_report', $report->id) }}">
+										@csrf
+										<button type="submit" class="btn btn-danger"><i class="fa fa-trash"></i></button>
+									</form>
 								</td>
 							</tr>
 							@endforeach

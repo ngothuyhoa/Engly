@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\View;
 use App\Observers\PostObserver;
 use App\Post;
+use App\Report;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -31,6 +32,15 @@ class AppServiceProvider extends ServiceProvider
             $userSidebars = User::With(['images', 'posts', 'followers'])->inRandomOrder()->paginate(3);
             
             $view->with(['tagSidebars' => $tagSidebars, 'userSidebars' => $userSidebars]);
+        });
+
+        view()->composer([
+            'admin.layout.index',
+        ], function ($view) {
+            $reports = Report::where('status', 0)->get();
+            $reportCount = count($reports);
+            
+            $view->with(['reportCount' => $reportCount]);
         });
 
         Post::observe(PostObserver::class);

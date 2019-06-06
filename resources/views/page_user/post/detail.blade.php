@@ -30,7 +30,7 @@
                         </p>        
                     </div>
                     <div class="row" id="share">
-                        @if(Auth::check() && Auth::user()->username == $post->user->username)
+                        @if(Auth::check() && (Auth::user()->username == $post->user->username ||Auth::user()->is_super_admin == 1))
                         <div class="col-md-1 col-sm-1" >
                             <div class="dropdown" id="edit">
                                 <button class="btn" type="button" data-toggle="dropdown" style="margin-right:20px; font-size: 24px; background: white; color: orange">

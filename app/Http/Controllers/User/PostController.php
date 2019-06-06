@@ -126,7 +126,6 @@ class PostController extends Controller
     public function show($slug)
     {
         $post = $this->postRepository->findBySlug($slug);
-        //dd($post);
         Event::fire('posts.view', $post);
         
         /*foreach ($post->tags as $tag) {

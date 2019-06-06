@@ -72,7 +72,6 @@ class UserController extends Controller
             $user = $this->userRepository->findByUserName($username);
             $posts = $auth->posts()->orderBy('id', 'DESC')->paginate();
             $postPublic = $auth->posts()->orderBy('id', 'DESC')->where('status', 1)->paginate();
-            //dd($postPublic);
             $postDraft = $auth->posts()->orderBy('id', 'DESC')->where('status', 0)->paginate();
             $follows = $auth->follows()->with('images')->get();
             $followers = $auth->followers()->with('images')->get();

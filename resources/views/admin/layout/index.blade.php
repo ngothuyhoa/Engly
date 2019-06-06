@@ -256,7 +256,7 @@
 			          		<a href="{{ route('index_report') }}" class="nav-link">
 			          			<i class="nav-icon fa fa-flag"></i>
 			          			<p>
-			          				Report
+			          				Report <span class="badge badge-danger"> {{$reportCount}} </span>
 			          				<i class="right fa fa-angle-left"></i>
 			          			</p>
 			          		</a>

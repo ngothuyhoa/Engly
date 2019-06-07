@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="zxx">
 <head>
-	<title>IT Host - Hosting Template</title>
+	<title>Engly - Pro</title>
 	<meta charset="UTF-8">
 	<meta name="description" content="Cloud 83 - hosting template ">
 	<meta name="keywords" content="cloud, hosting, creative, html">

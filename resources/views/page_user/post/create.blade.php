@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html>
 	<head>
-		<title>LineControl | v1.1.0</title>
+		<title>Create Post</title>
 		
 		<!-- include libraries(jQuery, bootstrap) -->
 		<link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.css" rel="stylesheet">

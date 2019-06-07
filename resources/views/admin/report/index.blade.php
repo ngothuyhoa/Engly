@@ -30,7 +30,6 @@
 					<table id="example1" class="table table-bordered table-striped">
 						<thead>
 							<tr>
-								<th>STT</th>
 								<th>Name</th>
 								<th>Post</th>
 								<th>Note</th>
@@ -41,7 +40,6 @@
 						<tbody>
 							@foreach($reports as $report)
 							<tr>
-								<td>{{ $report->user->id }}</td>
 								<td>{{ $report->user->fullname }}</td>
 								<td><a href="{{ route('post_detail', $report->post->slug) }}">{{ $report->post->title }}</a></td>
 								<td>{{ $report->note}}</td>

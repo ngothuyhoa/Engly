@@ -30,9 +30,10 @@ class UserController extends Controller
     {
         /*$test =  $this->userRepository->findOrFail(Auth::user()->id)->with();
         dd($test);*/
-        $users = User::where('id', '!=', auth()->user()->id)->get();
+        /*$user = User::where('id', '!=', auth()->user()->id)->get();
         //dd($users);
-        return view('page_user.user.index', compact('users'));
+        return view('page_user.user.index', compact('user'));*/
+        return redirect('/');
     }
 
     /**

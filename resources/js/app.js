@@ -101,7 +101,7 @@ function makeNotification(notification) {
 function routeNotification(notification) {
     var to = `?read=${notification.id}`;
     if(notification.type === NOTIFICATION_TYPES.follow) {
-        to = 'users' + to;
+        to = 'user' + to;
     } else if(notification.type === NOTIFICATION_TYPES.newPost) {
         //console.log(notification.data);
         const postSlug = notification.data.post_slug;

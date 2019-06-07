@@ -49,7 +49,7 @@
                                             <button class="edit-button">Draft</button>
                                         </form>
                                     </li>
-                                    <li><a class="edit-button" href="{{ route('post_edit', $post->slug) }}">Edit</a></li>
+                                    <li><a style="padding-left: 8px" class="edit-button" href="{{ route('post_edit', $post->slug) }}">Edit</a></li>
                                     <li>
                                         <form method="post" action="{{ route('post_destroy', $post->id) }}">
                                             <input type="hidden" name="_token" value="{{csrf_token()}}">

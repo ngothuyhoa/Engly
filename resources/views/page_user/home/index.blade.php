@@ -5,9 +5,9 @@
 		<div class="hero-content text-white">
 			<div class="row">
 				<div class="col-lg-6 pr-0">
-					<h2>Unbeatable Offers</h2>
-					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec malesuada lorem maximus mauris scelerisque, at rutrum nulla dictum. Ut ac ligula sapien. </p>
-					<a href="#" class="site-btn">Get your plan</a>
+					<h2>Welcome to Engly</h2>
+					<p>Một trang web chia sẻ kiến thức , những người biết chia sẻ cho những người không biết, những người không biết học từ những người đã biết. Mọi người có thể học mọi lúc mọi nơi, chia sẻ kiến thức với nhau </p>
+					<a href="{{ route('post') }}" class="site-btn">Get to Post</a>
 				</div>
 			</div>
 			<div class="hero-rocket">

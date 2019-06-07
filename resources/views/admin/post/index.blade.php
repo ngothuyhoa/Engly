@@ -52,7 +52,7 @@
 							@foreach($posts as $post)
 							<tr>
 								<td>{{ $post->user->username }}</td>
-								<td>{{ $post->title }}</td>
+								<td><a href="{{ route('post_detail', $post->slug) }}">{{ $post->title }}</a></td>
 								<td class="text-center">{{ $post->view }}</td>
 								<td class="text-center">{{ $post->vote }}</td>
 								<td class="text-center">
@@ -66,9 +66,6 @@
 								<td class="text-center">
                         			<form method="post" action="{{ route('destroy_post', $post->id) }}">
                         				@csrf
-                        				<a href="" class="btn btn-warning m-btn m-btn--icon m-btn--icon-only">
-	                            		<i class="fa fa-edit"></i>
-	                        			</a>
 	                        			<button  type="submit" class="btn btn-danger">
 	                            		<i class="fa fa-trash"></i>
 	                        			</button>

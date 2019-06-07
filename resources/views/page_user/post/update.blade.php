@@ -1,15 +1,17 @@
 <!DOCTYPE HTML>
 <html>
 	<head>
-		<title>LineControl | v1.1.0</title>
+		<title>Update Post</title>
 		
 		<!-- include libraries(jQuery, bootstrap) -->
 		<link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.css" rel="stylesheet">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 		<!-- include summernote css/js-->
 		<link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.9/summernote.css" rel="stylesheet">
 		<!-- Tag input -->
 		<link rel="stylesheet" href="/assets/css/bootstrap-tagsinput.css">
-		<link rel="stylesheet" href="/assets/css/style.css">	
+		<link rel="stylesheet" href="/assets/css/style.css">
+
 	</head>
 	<body>
 		@include('page_user.layout.header')
@@ -47,9 +49,7 @@
 					    <div class="col-md-1" style="font-weight: bold;"> Image: </div>
 					    <div class="col-md-11">
 					    	<div class="form-group">
-							    <input type="file" class="form-control-file" name="image" accept="image/*">
-							    <img width="200" height="150" src="/post_image/1558408221.jpg">
-
+							    <input type="file" class="form-control-file" name="image" accept="image/*"> 
 							</div>
 					    </div>
 					    <div class="col-md-1" style="font-weight: bold;"> Option: </div>
@@ -61,6 +61,9 @@
 					    </div>
 				        
 					    <button type="submit" class="btn btn-info">Update</button>
+
+                        <a class="btn btn-danger" href="{{ URL::previous() }}">Go Back</a>
+                                    
 					    </div>
 					</form>
 

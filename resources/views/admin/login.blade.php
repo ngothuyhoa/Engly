@@ -26,13 +26,19 @@
     </div>
 <hr>
     <!-- Login Form -->
-    <form method="post" action="{{ route('post_login') }}">
-    	{{ csrf_field() }}
-
-      <input type="text" id="login" class="fadeIn second" name="email" placeholder="Email">
-      <input type="password" id="password" class="fadeIn third" name="password" placeholder="password">
-      <input type="submit" class="fadeIn fourth" value="Log In">
-    </form>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-8 offset-md-2">
+            <form  method="post" action="{{ route('post_login') }}">
+        {{ csrf_field() }}
+        <input type="text" class="form-control"  name="email" placeholder="Email">
+        <input style="margin-top: 10px" type="password" class="form-control"   name="password" placeholder="password">
+        <input type="submit" class="fadeIn fourth" value="Log In">
+      </form>
+        </div>
+      </div>
+    </div>
+  
 
     <!-- Remind Passowrd -->
     <div id="formFooter">
